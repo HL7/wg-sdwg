@@ -1,0 +1,2752 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="cda.xsl"?>
+<ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3"
+  xmlns:cda="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc"
+  xsi:schemaLocation="urn:hl7-org:v3 ../../../Schema/infrastructure/cda/CDA_SDTC.xsd">
+  <!--
+    Title: Example Colon Cancer Treatment Plan and Summary Sample File
+    File Name:  CDAR2_IG_CLONCDATA_R1_D3_2016JAN_CCTPS.xml
+    Created by:  Lantana Consulting Group, LLC
+    
+    Revision History:
+    20140508 Draft started for Design
+    20140805 Final for ballot submission
+    20141027 Added updated LOINC codes for publication
+    20150414 Replaced temporary SNOMED CT codes for  Colon TNM Category entry and added new dynamic vocab binding for the value element of the Neuropathy Grade Observation entry.
+    20150914 SG Update for [C-CDA 2.1] Implied templates
+    
+    $LastChangedDate: 2015-11-23 13:34:20 +1000 (Mon, 23 Nov 2015) $
+  -->
+  <!--
+  ********************************************************  
+    Disclaimer:  This sample file contains representative data elements from the 
+    Clinical Oncology Treatment Plan and Summary Implementation Guide. 
+    The file depicts a fictional character's health data. Any resemblance to a real person is coincidental.
+    To illustrate as many data elements as possible, the clinical scenario may not be entirely plausible. 
+    The data in this sample file is not intended to represent a real patients, people or clinical events. 
+    This sample is designed to be used in conjunction with the Clinical Oncology Treatment Plan and Summary Implementation Guide.     
+    
+    Please note:  This sample is valid against the schema and schematron for ERRORS (not warnings). 
+    Logical schematron WARNINGS will generate from the sample file. 
+    It is logical to generate a samples file from a system with valid warnings.
+  ********************************************************
+  -->
+  
+  <realmCode code="US" />
+  <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040" />
+  <!-- [C-CDA 2.1] US Realm Header (V3) -->
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01" />
+  <!-- Colon Cancer Treatment Plan and Summary (V2) -->
+  <templateId root="2.16.840.1.113883.10.20.30.1.2" extension="2015-12-01" />
+  <id root="04fc2b90-10e0-11e2-892e-0800200c9a66" />
+  <!-- ClinicalDocument code -->
+  <code code="74156-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+    displayName="Oncology Treatment Plan and Summary Document" />
+  <title>Colon Cancer Adjuvant Treatment Plan and Summary</title>
+  <effectiveTime value="20130301" />
+  <confidentialityCode code="N" />
+  <languageCode code="en-US" />
+  <recordTarget>
+    <patientRole>
+      <id root="1.2.1.173000" extension="2131823431" />
+      <addr use="HP">
+        <streetAddressLine>1000 Home Drive</streetAddressLine>
+        <city>Blue Bell</city>
+        <state>MA</state>
+        <postalCode>02368</postalCode>
+        <country>US</country>
+      </addr>
+      <!-- patient cell   -->
+      <telecom value="tel:(555)555-1212" use="MC" />
+      <!-- patient email  -->
+      <telecom value="mailto:my.email@address.com" />
+      <patient>
+        <!-- patient name  -->
+        <name use="L">
+          <given>Eve</given>
+          <family>Everywomen</family>
+        </name>
+        <!-- patient gender -->
+        <administrativeGenderCode code="F" codeSystem="2.16.840.1.113883.5.1" displayName="Female" />
+        <!-- patient date of birth -->
+        <birthTime value="19670131" />
+        <maritalStatusCode code="M" codeSystem="2.16.840.1.113883.5.2" codeSystemName="HL7 MaritalStatus"
+          displayName="Married">
+          <originalText>Now married</originalText>
+        </maritalStatusCode>
+        <raceCode code="2106-3" displayName="White" codeSystem="2.16.840.1.113883.6.238"
+          codeSystemName="Race &amp; Ethnicity - CDC"> </raceCode>
+        <ethnicGroupCode code="2186-5" displayName="Not Hispanic or Latino" codeSystem="2.16.840.1.113883.6.238"
+          codeSystemName="Race &amp; Ethnicity - CDC" />
+        <languageCommunication>
+          <languageCode code="fr-CN" />
+          <modeCode code="ESP" displayName="Expressed spoken" codeSystem="2.16.840.1.113883.5.60"
+            codeSystemName="LanguageAbilityMode" />
+          <proficiencyLevelCode code="G" displayName="Good" />
+          <preferenceInd value="true" />
+        </languageCommunication>
+        <languageCommunication>
+          <languageCode code="en" />
+          <modeCode code="RWR" displayName="Receive Written" codeSystem="2.16.840.1.113883.5.60"
+            codeSystemName="LanguageAbilityMode" />
+          <preferenceInd value="false" />
+        </languageCommunication>
+      </patient>
+      <providerOrganization>
+        <id root="2.16.840.1.113883.4.6" />
+        <name>Cancer Clinic</name>
+        <telecom use="WP" value="tel: 555-555-5000" />
+        <addr>
+          <streetAddressLine>1000 Healthcare Drive</streetAddressLine>
+          <city>Blue Bell</city>
+          <state>MA</state>
+          <postalCode>02368</postalCode>
+          <country>US</country>
+        </addr>
+      </providerOrganization>
+    </patientRole>
+  </recordTarget>
+  <author>
+    <time value="20130107224411+0500" />
+    <assignedAuthor>
+      <id extension="99999999" root="2.16.840.1.113883.4.6" />
+      <code code="200000000X" codeSystem="2.16.840.1.113883.6.101" displayName="Cancer Associations PA" />
+      <addr>
+        <streetAddressLine>1020 Healthcare Drive</streetAddressLine>
+        <city>Blue Bell</city>
+        <state>MA</state>
+        <postalCode>02368</postalCode>
+        <country>US</country>
+      </addr>
+      <telecom value="tel:(555)555-1200" use="WP" />
+      <assignedPerson>
+        <name>
+          <family>Nightengale</family>
+          <given>Nancy</given>
+          <suffix>AOCNP</suffix>
+        </name>
+      </assignedPerson>
+    </assignedAuthor>
+  </author>
+  <custodian>
+    <assignedCustodian>
+      <representedCustodianOrganization>
+        <id extension="99999999" root="2.16.840.1.113883.4.6" />
+        <name>Cancer Clinic</name>
+        <telecom value="tel:(555)555-2314" use="WP" />
+        <addr>
+          <streetAddressLine>30 Hospital Rd.</streetAddressLine>
+          <city>Blue Bell</city>
+          <state>MA</state>
+          <postalCode>02368</postalCode>
+          <country>US</country>
+        </addr>
+      </representedCustodianOrganization>
+    </assignedCustodian>
+  </custodian>
+  <informationRecipient>
+    <intendedRecipient>
+      <informationRecipient>
+        <name>
+          <given>Henry</given>
+          <family>Seven</family>
+        </name>
+      </informationRecipient>
+      <receivedOrganization>
+        <name>Community Health and Hospitals</name>
+      </receivedOrganization>
+    </intendedRecipient>
+  </informationRecipient>
+  <legalAuthenticator>
+    <time value="20130107130000+0500" />
+    <signatureCode code="S" />
+    <assignedEntity>
+      <id extension="999999999" root="2.16.840.1.113883.4.6" />
+      <addr>
+        <streetAddressLine>1000 Healthcare Drive</streetAddressLine>
+        <city>Blue Bell</city>
+        <state>MA</state>
+        <postalCode>02368</postalCode>
+        <country>US</country>
+      </addr>
+      <telecom use="WP" value="tel:555-555-1002" />
+      <assignedPerson>
+        <name>
+          <given>Henry</given>
+          <family>Seven</family>
+        </name>
+      </assignedPerson>
+    </assignedEntity>
+  </legalAuthenticator>
+  <!-- SUPPORT CONTACT  -->
+  <participant typeCode="IND">
+    <associatedEntity classCode="NOK">
+      <code code="MTH" codeSystem="2.16.840.1.113883.5.111" />
+      <!-- SUPPORT CONTACT phone -->
+      <telecom value="tel:(555)555-2006" use="WP" />
+      <!-- SUPPORT CONTACT name  -->
+      <associatedPerson>
+        <name>
+          <prefix>Mrs.</prefix>
+          <given>Martha</given>
+          <family>Mum</family>
+        </name>
+      </associatedPerson>
+    </associatedEntity>
+  </participant>
+  <!-- MAY [0...*] Survivorship Care Provider  -->
+  <participant typeCode="PRF">
+    <!-- the most appropriate participant type found is PRF "performer" -->
+    <functionCode code="224571005" displayName="Nurse Practitioner" codeSystem="2.16.840.1.113883.6.96"
+      codeSystemName="SNOMED CT" />
+    <associatedEntity classCode="PROV">
+      <!-- classCode indicates "healthcare provider" -->
+      <!-- SHOULD ... Survivorship Care Provider Contacts address -->
+      <addr>
+        <streetAddressLine>1000 Healthcare Drive</streetAddressLine>
+        <city>Blue Bell</city>
+        <state>MA</state>
+        <postalCode>02368</postalCode>
+        <country>US</country>
+      </addr>
+      <!-- SHOULD ... Survivorship Care Provider Contacts phone -->
+      <telecom value="tel:(252)585-2077" use="WP" />
+      <!-- Survivorship Care Provider Contacts name  -->
+      <associatedPerson>
+        <name>
+          <given>Nancy</given>
+          <family>Practice</family>
+        </name>
+      </associatedPerson>
+    </associatedEntity>
+  </participant>
+  <!-- Survivorship Care Provider  -->
+  <participant typeCode="PRF">
+    <!-- the most appropriate patricipant type found is PRF "performer" -->
+    <functionCode code="449161006" displayName="Physician Assistant" codeSystem="2.16.840.1.113883.6.96"
+      codeSystemName="SNOMED CT" />
+    <associatedEntity classCode="PROV">
+      <!-- classCode indicates "healthcare provider" -->
+      <!-- Survivorship Care Provider Contacts phone -->
+      <telecom value="tel:(252)585-2185" use="WP" />
+      <!-- Survivorship Care Provider Contacts name  -->
+      <associatedPerson>
+        <name>
+          <given>Phil</given>
+          <family>Assist</family>
+        </name>
+      </associatedPerson>
+    </associatedEntity>
+  </participant>
+  <documentationOf>
+    <!-- Healthcare provider Information -->
+    <serviceEvent classCode="PCPR">
+      <code code="363406005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Colon Cancer" />
+      <effectiveTime>
+        <low value="20120320" />
+        <high value="20130102" />
+      </effectiveTime>
+      <!--MEDICAL ONCOLOGIST -->
+      <performer typeCode="PRF">
+        <assignedEntity>
+          <id extension="12345" root="2.16.840.1.113883.4.6" />
+          <code code="207RH0000X" codeSystem="2.16.840.1.113883.6.101" codeSystemName="NUCC" displayName="Hematologist" />
+          <addr>
+            <streetAddressLine>1000 Healthcare Drive</streetAddressLine>
+            <city>Blue Bell</city>
+            <state>MA</state>
+            <postalCode>02368</postalCode>
+            <country>US</country>
+          </addr>
+          <telecom value="tel:+1-301-975-3251" use="WP" />
+          <assignedPerson>
+            <name>
+              <prefix>Dr.</prefix>
+              <given>Trudy</given>
+              <family>Tumor</family>
+            </name>
+          </assignedPerson>
+        </assignedEntity>
+      </performer>
+      <performer typeCode="PRF">
+        <!-- SURGICAL ONCOLOGIST-->
+        <assignedEntity>
+          <id extension="12345" root="2.16.840.1.113883.4.6" />
+          <code code="22086X0206X" codeSystem="2.16.840.1.113883.6.101" codeSystemName="NUCC"
+            displayName="Surgical Oncology" />
+          <addr>
+            <streetAddressLine>22 Hospital Ave.</streetAddressLine>
+            <city>Burlington</city>
+            <state>MA</state>
+            <postalCode>02368</postalCode>
+            <country>US</country>
+          </addr>
+          <telecom value="tel:+1-301-975-3211" use="WP" />
+          <assignedPerson>
+            <name>
+              <prefix>Dr.</prefix>
+              <given>Carl</given>
+              <family>Cutter</family>
+            </name>
+          </assignedPerson>
+        </assignedEntity>
+      </performer>
+      <performer typeCode="PRF">
+        <!-- RADIATION ONCOLOGIST-->
+        <assignedEntity>
+          <id extension="12345" root="2.16.840.1.113883.4.6" />
+          <code code="261QX0203X" codeSystem="2.16.840.1.113883.6.101" codeSystemName="NUCC"
+            displayName="Radiation Oncology" />
+          <addr>
+            <streetAddressLine>1000 Healthcare Drive</streetAddressLine>
+            <city>Blue Bell</city>
+            <state>MA</state>
+            <postalCode>02368</postalCode>
+            <country>US</country>
+          </addr>
+          <telecom value="tel:+1-301-975-3021" use="WP" />
+          <assignedPerson>
+            <name>
+              <prefix>Dr.</prefix>
+              <given>Christine</given>
+              <family>Curie</family>
+            </name>
+          </assignedPerson>
+        </assignedEntity>
+      </performer>
+      <performer typeCode="PRF">
+        <!-- Primary Care Provider-->
+        <functionCode code="PCP" codeSystem="2.16.840.1.113883.5.88" />
+        <assignedEntity>
+          <id extension="12345" root="2.16.840.1.113883.4.6" />
+          <code code="1223G0001X" codeSystem="2.16.840.1.113883.6.101" codeSystemName="NUCC"
+            displayName="General Practice" />
+          <addr>
+            <streetAddressLine>1005 Healthcare Drive</streetAddressLine>
+            <city>Blue Bell</city>
+            <state>MA</state>
+            <postalCode>02368</postalCode>
+            <country>US</country>
+          </addr>
+          <telecom value="tel:+1-301-975-3251" use="WP" />
+          <assignedPerson>
+            <name>
+              <prefix>Dr.</prefix>
+              <given>Patricia</given>
+              <family>Primary</family>
+            </name>
+          </assignedPerson>
+        </assignedEntity>
+      </performer>
+    </serviceEvent>
+  </documentationOf>
+  <!--
+    ********************************************************
+    CDA Body
+    ********************************************************
+    -->
+  <component>
+    <structuredBody>
+      <!--
+        ********************************************************
+        FAMILY HISTORY SECTION CTPS (V3)
+        ********************************************************
+    -->
+      <component>
+        <section>
+          <!-- [C-CDA 2.1] Family History Section (V3) -->
+          <templateId root="2.16.840.1.113883.10.20.22.2.15" extension="2015-08-01" />
+          <!-- Family History Section CTPS (V3)-->
+          <templateId root="2.16.840.1.113883.10.20.30.2.3" extension="2015-12-01" />
+          <code code="10157-6" displayName="History of family member diseases" codeSystem="2.16.840.1.113883.6.1"
+            codeSystemName="LOINC" />
+          <title>FAMILY HISTORY</title>
+          <text>
+            <linkHtml href="https://www.google.com/webhp?source=search_app" name="Test Patient Pedigree Model" />
+            <list>
+              <item>FamilyPedigreeModel (active pointer link will render)</item>
+              <item>From Avon Center Appointment Number 299 </item>
+            </list>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Relative</th>
+                  <th>Diagnosis</th>
+                  <th>Age At Onset</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Biological Mother</td>
+                  <td>Colon Cancer</td>
+                  <td>50</td>
+                </tr>
+                <tr>
+                  <td>Biological Father</td>
+                  <td>Prostate Cancer</td>
+                  <td>57</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN" negationInd="true">
+              <!-- Family History of Cancer None -->
+              <templateId root="2.16.840.1.113883.10.20.30.3.11" />
+              <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" />
+              <text> No Family History of Cancer</text>
+              <statusCode code="completed" />
+              <value xsi:type="CD" code="275937001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"
+                displayName="family history of cancer" />
+            </observation>
+          </entry>
+          <entry>
+            <act classCode="ACT" moodCode="EVN">
+              <!-- Family History Pedigree -->
+              <templateId root="2.16.840.1.113883.10.20.30.3.48" />
+              <code code="10157-6" displayName="History of family member diseases" codeSystem="2.16.840.1.113883.6.1"
+                codeSystemName="LOINC" />
+              <reference typeCode="REFR">
+                <externalObservation classCode="OBS" moodCode="EVN">
+                  <!-- Example id -->
+                  <id root="2.16.840.1.113883.6.117" extension="299"
+                    assigningAuthorityName="Avon Center Appointment Number" />
+                  <text mediaType="text">FamilyPedigreeModel
+									  <reference
+                      value="https://www.google.com/webhp?source=search_app" />
+                  </text>
+                </externalObservation>
+              </reference>
+            </act>
+          </entry>
+          <entry>
+            <organizer moodCode="EVN" classCode="CLUSTER">
+              <!--[C-CDA 2.1] Family History Organizer (V3)-->
+              <templateId root="2.16.840.1.113883.10.20.22.4.45" extension="2015-08-01" />
+              <id root="203e0452-fe48-401b-8dac-72b61f21be18" />
+              <statusCode code="completed" />
+              <!-- Example using HL7 Family Member Value Set. -->
+              <subject>
+                <relatedSubject classCode="PRS">
+                  <code code="MTH" displayName="Mother" codeSystemName="HL7 FamilyMember"
+                    codeSystem="2.16.840.1.113883.5.111">
+                    <translation code="9947008" displayName="Biological mother" codeSystemName="SNOMED"
+                      codeSystem="2.16.840.1.113883.6.96" />
+                  </code>
+                  <subject>
+                    <sdtc:id root="2.16.840.1.113883.19.5.99999.2" extension="1234" />
+                    <administrativeGenderCode code="F" codeSystem="2.16.840.1.113883.5.1" displayName="Female" />
+                    <birthTime value="1930" />
+                  </subject>
+                </relatedSubject>
+              </subject>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <!--[C-CDA 2.1] Family History Observation (V3) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.46" extension="2015-08-01" />
+                  <id root="5bfe3ec0-5c8b-11db-b0de-0800200c9a66" />
+                  <code code="55607006" displayName="Problem" codeSystemName="SNOMED CT" codeSystem="2.16.840.1.113883.6.96">
+                    <translation code="75326-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Problem" />
+                  </code>
+                  <statusCode code="completed" />
+                  <effectiveTime value="1980" />
+                  <value xsi:type="CD" code="363406005" codeSystem="2.16.840.1.113883.6.96"
+                    displayName="malignant tumor of colon (disorder)" />
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+          <entry>
+            <organizer moodCode="EVN" classCode="CLUSTER">
+              <!--[C-CDA 2.1] Family History Organizer (V3)-->
+              <templateId root="2.16.840.1.113883.10.20.22.4.45" extension="2015-08-01" />
+              <id root="2dcefa93-e205-4258-ae8a-f5f3d518b98d" />
+              <statusCode code="completed" />
+              <subject>
+                <relatedSubject classCode="PRS">
+                  <code code="FTH" displayName="Father" codeSystemName="HL7 FamilyMember"
+                    codeSystem="2.16.840.1.113883.5.111">
+                    <translation code="9947008" displayName="Biological father" codeSystemName="SNOMED"
+                      codeSystem="2.16.840.1.113883.6.96" />
+                  </code>
+                  <subject>
+                    <administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1" displayName="Male" />
+                    <birthTime value="1910" />
+                  </subject>
+                </relatedSubject>
+              </subject>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <!--[C-CDA 2.1] Family History Observation (V3) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.46" extension="2015-08-01" />
+                  <id root="d42ebf70-5c89-11db-b0de-0800200c9a66" />
+                  <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"
+                    displayName="Diagnosis">
+                    <translation code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                      displayName="Diagnosis" />
+                  </code>
+                  <statusCode code="completed" />
+                  <effectiveTime value="1967" />
+                  <value xsi:type="CD" code="22298006" codeSystem="2.16.840.1.113883.6.96"
+                    displayName="Cancer of the Prostate" />
+                  <entryRelationship typeCode="SUBJ" inversionInd="true">
+                    <observation classCode="OBS" moodCode="EVN">
+                      <!-- [C-CDA 2.1] Age Observation -->
+                      <templateId root="2.16.840.1.113883.10.20.22.4.31" />
+                      <id root="b5b6bc28-2c6a-4b78-accf-e493d125072e" />
+                      <code code="445518008" codeSystem="2.16.840.1.113883.6.96" displayName="Age At Onset" />
+                      <statusCode code="completed" />
+                      <value xsi:type="PQ" value="57" unit="a" />
+                    </observation>
+                  </entryRelationship>
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+        </section>
+      </component>
+      <!-- 
+        ********************************************************
+        PROCEDURES SECTION CCTPS (V2)
+        ******************************************************** 
+    -->
+      <component>
+        <section>
+          <!-- [C-CDA 2.1] Procedures Section (entries optional) (V2) -->
+          <templateId root="2.16.840.1.113883.10.20.22.2.7" extension="2014-06-09" />
+          <!--Procedures Section CCTPS (V2)-->
+          <templateId root="2.16.840.1.113883.10.20.30.2.13" extension="2015-12-01" />
+          <code code="47519-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+            displayName="HISTORY OF PROCEDURES" />
+          <title>PROCEDURES</title>
+          <text>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Procedure</th>
+                  <th>Date</th>
+                  <th>Priority</th>
+                  <th>Notable Findings/Comments</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Colonoscopy</td>
+                  <td>March 15, 2012</td>
+                  <td>n/a</td>
+                  <td>Finding: Adenmatous polyp, left colon</td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <td>Resection of exteriorized segment of large intestine, Principal</td>
+                  <td>March 30, 2012</td>
+                  <td>Urgent</td>
+                  <td>Pathology Findings: 5 out of 6 lymph nodes positive</td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <td>Anterior resection of rectum with synchronous colostomy</td>
+                  <td>April 30, 2012</td>
+                  <td>n/a</td>
+                  <td>Comment: Temporary Colostomy</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <!-- COLON CANCER PROCEDURES -->
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <!-- [C-CDA 2.1] Procedure Activity Observation (V2)] -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.13" extension="2014-06-09" />
+              <!--  Colon Cancer Diagnostic Procedure (V2) -->
+              <templateId root="2.16.840.1.113883.10.20.30.3.59" extension="2015-12-01" />
+              <id root="e401f340-7be2-11db-9fe1-0800200c9a66" />
+              <code code="174184006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"
+                displayName="diagnostic endoscopic examination on colon (procedure)" />
+              <text>Colonoscopy. Finding: Adenomatous polyp</text>
+              <statusCode code="completed" />
+              <effectiveTime value="20120315" />
+              <value xsi:type="CD" code="82375006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"
+                displayName="adenomatous polyp (morphologic abnormality)" />
+              <targetSiteCode code="302508007" displayName="colon (body structure)" codeSystem="2.16.840.1.113883.6.96"
+                codeSystemName="SNOMED CT">
+                <qualifier>
+                  <name code="363698007" displayName="Finding site" />
+                  <value code="7771000" displayName="Left(qualifier value)" />
+                </qualifier>
+              </targetSiteCode>
+            </observation>
+          </entry>
+          <entry>
+            <procedure classCode="PROC" moodCode="EVN">
+              <!-- [C-CDA 2.1] Procedure Activity Procedure (V2) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09" />
+              <!-- Colon Cancer Surgical Procedure (V2)-->
+              <templateId root="2.16.840.1.113883.10.20.30.3.58" extension="2015-12-01" />
+              <id root="e401f340-7be2-11db-9fe1-0800200c9a66" />
+              <code code="46.04" codeSystem="2.16.840.1.113883.6.104" codeSystemName="ICD-9CM"
+                displayName="Resection of exteriorized segment of large intestine">
+                <qualifier>
+                  <name code="260870009" displayName="priority (attribute)" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMED CT" />
+                  <value code="8319008" displayName="principal (qualifier value)" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMED CT" />
+                </qualifier>
+              </code>
+              <text>Resection of exteriorized segment of large intestine. Notable findings/Comments:
+								5 out of 6 nodes positive</text>
+              <statusCode code="completed" />
+              <effectiveTime value="20120330" />
+              <priorityCode code="UR" codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"
+                displayName="Urgent" />
+              <!--  COLON CANCER PROCEDURES (Example with specimens) -->
+              <!-- LYMPH NODE SAMPLING RESULT ORGANIZER -->
+              <entryRelationship typeCode="COMP">
+                <organizer classCode="CLUSTER" moodCode="EVN">
+                  <!-- [C-CDA 2.1] Result Organizer (V3) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.1" extension="2015-08-01" />
+                  <!-- Lymph Node Sampling Result Organizer (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.13" extension="2015-12-01" />
+                  <id root="7d5a02b0-67a4-11db-bd13-0800200c9a66" />
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" code="178292004"
+                    displayName="Lymph node sampling" />
+                  <statusCode code="completed" />
+                  <effectiveTime>
+                    <low value="20120430"/>
+                    <high value="20120430"/>
+                  </effectiveTime>
+                  <specimen>
+                    <specimenRole>
+                      <id root="df9133b1-1adb-11e0-ac64-0800200c9a66" />
+                      <specimenPlayingEntity>
+                        <!-- Specimen type -->
+                        <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" code="397436009"
+                          displayName="(a)specimen obtained by lymphadenectomy" />
+                      </specimenPlayingEntity>
+                    </specimenRole>
+                  </specimen>
+                  <reference typeCode="REFR">
+                    <externalDocument classCode="DOCCLIN" moodCode="EVN">
+                      <id root="10021d19-5b29-4771-bce4-236109943dd4" />
+                      <code code="34122-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                        displayName="Pathology Note" />
+                      <text mediaType="Pathology/pdf">
+                        <reference value="Pathology Note.10021d19-5b29-4771-bce4-236109943dd4.pdf" />
+                      </text>
+                    </externalDocument>
+                  </reference>
+                  <!-- NUMBER OF LYMPH NODES REMOVED AND EXAMINED -->
+                  <component>
+                    <observation classCode="OBS" moodCode="EVN">
+                      <!-- [C-CDA 2.1] Result Observation (V3) -->
+                      <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01" />
+                      <!-- Number of Lymph Nodes Removed and Examined (V2) -->
+                      <templateId root="2.16.840.1.113883.10.20.30.3.14" extension="2015-12-01" />
+                      <id root="df9133b2-1adb-11e0-ac64-0800200c9a66" />
+                      <code codeSystem="2.16.840.1.113883.6.1" code="44621-1" codeSystemName="LOINC"
+                        displayName="Regional lymph nodes identified" />
+                      <statusCode code="completed" />
+                      <effectiveTime value="20120430" />
+                      <value xsi:type="INT" value="6" />
+                    </observation>
+                  </component>
+                  <!-- NUMBER OF LYMPH NODES POSITIVE -->
+                  <component>
+                    <observation classCode="OBS" moodCode="EVN">
+                      <!-- [C-CDA 2.1] Result Observation (V3) -->
+                      <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01" />
+                      <!-- Number of Lymph Nodes Positive (V2) -->
+                      <templateId root="2.16.840.1.113883.10.20.30.3.15" extension="2015-12-01" />
+                      <id root="df9133b3-1adb-11e0-ac64-0800200c9a66" />
+                      <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" code="44622-9"
+                        displayName="Regional lymph nodes containing metastases" />
+                      <statusCode code="completed" />
+                      <effectiveTime value="20120430" />
+                      <value xsi:type="INT" value="3" />
+                      <interpretationCode code="A" codeSystem="2.16.840.1.113883.5.83" />
+                    </observation>
+                  </component>
+                </organizer>
+              </entryRelationship>
+            </procedure>
+          </entry>
+
+        </section>
+      </component>
+      <!--
+		********************************************************
+		PROBLEM SECTION 
+		********************************************************
+	-->
+      <component>
+        <!--PROBLEM SECTION -->
+        <section>
+          <!-- [C-CDA 2.1] Problem Section (entries optional) (V3) -->
+          <templateId root="2.16.840.1.113883.10.20.22.2.5" extension="2015-08-01" />
+          <!-- Problem Section CCTPS (V2) -->
+          <templateId root="2.16.840.1.113883.10.20.30.2.10" extension="2015-12-01" />
+          <code code="11450-4" displayName="Problem Section" codeSystem="2.16.840.1.113883.6.1" />
+          <title>PROBLEMS</title>
+          <text>
+            <content>Pre-disposing Conditions:</content>
+            <paragraph />
+            <list>
+              <item>Irritable Bowel Disorder, January 5, 2012</item>
+            </list>
+            <content>Co-Morbid Conditions:</content>
+            <paragraph />
+            <paragraph />
+            <paragraph />
+            <list>
+              <item ID="diagnosis1">Asthma Since January 3, 2012</item>
+              <item ID="diagnosis2">Congestive Heart Failure Since January 3, 2012</item>
+            </list>
+            <paragraph />
+            <paragraph />
+            <content>Primary Diagnosis:</content>
+            <paragraph />
+            <list>
+              <item>Malignant neoplasm of sigmoid colon Diagnosis Date: January 04, 2012</item>
+            </list>
+            <paragraph />
+            <paragraph />
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Type of Staging</th>
+                  <th>Stage</th>
+                  <th>Date of Diagnosis</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Colon TNM Category</td>
+                  <td>pN2b category</td>
+                  <td>January 4, 2012</td>
+                </tr>
+                <tr>
+                  <td>Tumor Category</td>
+                  <td>T2: Tumor invades muscularis propria</td>
+                  <td>January 4, 2012</td>
+                </tr>
+                <tr>
+                  <td>Node Category</td>
+                  <td>N2: Metastasis in 4 or more regional lymph nodes</td>
+                  <td>January 4, 2012</td>
+                </tr>
+                <tr>
+                  <td>Metastasis Category</td>
+                  <td>M1: Distant metastasis</td>
+                  <td>January 4, 2012</td>
+                </tr>
+              </tbody>
+            </table>
+            <content />
+            <paragraph />
+            <content>Post Treatment Status: Recurrent disease, July 7, 2012</content>
+            <paragraph />
+            <content>Basis of Cancer Detection: Screening</content>
+            <paragraph />
+            <!--<paragraph/>
+						<content>Post Treatment Neuropathy Status: Grade 5</content>
+						<paragraph/>-->
+          </text>
+
+          <entry>
+            <!-- Pre-Disposing Conditions -->
+            <act classCode="ACT" moodCode="EVN">
+              <!-- [C-CDA 2.1] Problem Concern Act (V3) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.3" extension="2015-08-01" />
+              <id root="ba27f335-8ef9-41b7-be1c-2f9e81b41e5c" />
+              <code code="CONC" codeSystem="2.16.840.1.113883.5.6" displayName="Concern" />
+              <statusCode code="active" />
+              <effectiveTime>
+                <low value="20120105" />
+                <high nullFlavor="NA" />
+              </effectiveTime>
+              <entryRelationship typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <!-- [C-CDA 2.1] Problem Observation (V3) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01" />
+                  <id root="3ad0d57b-57c0-4f46-9d2f-17678c254521" />
+                  <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"
+                    displayName="Diagnosis">
+                    <translation code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                      displayName="Diagnosis" />
+                  </code>
+                  <text>
+                    <reference value="#diagnosis2" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime>
+                    <low value="20120105" />
+                  </effectiveTime>
+                  <value xsi:type="CD" code="10743008" codeSystem="2.16.840.1.113883.6.96"
+                    displayName="irritable bowel syndrome (disorder)" />
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+          <entry>
+            <act classCode="ACT" moodCode="EVN">
+              <!-- [C-CDA 2.1] Problem Concern Act (V3) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.3" extension="2015-08-01" />
+              <!-- Colon Cancer Concern Act (V2) -->
+              <templateId root="2.16.840.1.113883.10.20.30.3.52" extension="2015-12-01" />
+              <id root="ec8a6ff8-ed4b-4f7e-82c3-e98e58b45de7" />
+              <code code="CONC" codeSystem="2.16.840.1.113883.5.6" displayName="Concern" />
+              <statusCode code="completed" />
+              <effectiveTime>
+                <low value="20120104" />
+                <high value="20120104" />
+              </effectiveTime>
+              <!-- COLON CANCER DIAGNOSIS OBSERVATION -->
+              <entryRelationship typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <!-- [C-CDA 2.1] Problem Observation (V3) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01" />
+                  <!-- Colon Cancer Diagnosis Observation (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.53" extension="2015-12-01" />
+                  <id root="4f5e6e60-e641-4e80-ac7b-cdea1029bcce" />
+                  <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"
+                    displayName="Diagnosis">
+                    <translation code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                      displayName="Diagnosis" />
+                  </code>
+                  <statusCode code="completed" />
+                  <!-- Date of diagnosis -->
+                  <effectiveTime>
+                    <low value="20120104" />
+                  </effectiveTime>
+                  <value xsi:type="CD" codeSystem="2.16.840.1.113883.6.103" codeSystemName="ICD-9CM" code="153.3"
+                    displayName="Malignant neoplasm of sigmoid colon">
+                    <qualifier>
+                      <name code="116676008" displayName="associated morphology (attribute)"
+                        codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+                      <value code="263918006" displayName="undifferentiated (qualifier value)" />
+                    </qualifier>
+                  </value>
+                  <!-- COLON TNM CLINICAL CATEGORY -->
+                  <entryRelationship typeCode="SPRT">
+                    <act classCode="ACT" moodCode="EVN">
+                      <!-- Colon TNM Category TemplateID -->
+                      <templateId root="2.16.840.1.113883.10.20.30.3.54" />
+                      <id root="d3bcc512-d406-465c-a2b8-db2ace265681" />
+                      <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" code="706904009"
+                        displayName="Tumor-node-metastasis (TNM) Colon Staging (tumor staging)" />
+                      <effectiveTime value="20120112" />
+                      <entryRelationship typeCode="COMP">
+                        <observation classCode="OBS" moodCode="EVN">
+                          <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" code="67208-9"
+                            displayName="TNM Pathologic staging" />
+                          <statusCode code="completed" />
+                          <value xsi:type="CD" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"
+                            code="443452006" displayName="pN2b category" />
+                          <!-- TUMOR(T)-->
+                          <entryRelationship typeCode="COMP">
+                            <observation classCode="OBS" moodCode="EVN">
+                              <!-- COLON TNM TUMOR (T) TemplateID-->
+                              <templateId root="2.16.840.1.113883.10.20.30.3.55" />
+                              <id root="2bbad97e-136c-4401-81bc-cfee14b31900" />
+                              <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" code="59528-0"
+                                displayName="Derived American Joint Committee on Cancer-7 T descriptor" />
+                              <statusCode code="completed" />
+                              <effectiveTime>
+                                <low value="20120104" />
+                              </effectiveTime>
+                              <value xsi:type="CD" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"
+                                code="433471000124103" displayName="T2: Tumor invades muscularis propria" />
+                              <reference typeCode="REFR">
+                                <externalObservation classCode="OBS" moodCode="EVN">
+                                  <text mediaType="text">
+                                    <reference value="http://www.cancerstaging.org/" />
+                                  </text>
+                                </externalObservation>
+                              </reference>
+                            </observation>
+                          </entryRelationship>
+                          <!-- COLON TNM Node(N) STAGING -->
+                          <entryRelationship typeCode="COMP">
+                            <observation classCode="OBS" moodCode="EVN">
+                              <!-- Colon TNM Node Category TemplateID -->
+                              <templateId root="2.16.840.1.113883.10.20.30.3.56" />
+                              <id root="7c77d6c1-2f29-448c-b76f-7287665c8540" />
+                              <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" code="59525-6"
+                                displayName="Derived American Joint Committee on Cancer-7 N descriptor " />
+                              <statusCode code="completed" />
+                              <effectiveTime>
+                                <low value="20120104" />
+                              </effectiveTime>
+                              <value xsi:type="CD" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"
+                                code="433551000124109" displayName="N2: Metastasis in 4 or more regional lymph nodes" />
+                              <reference typeCode="REFR">
+                                <externalObservation classCode="OBS" moodCode="EVN">
+                                  <text mediaType="text">
+                                    <reference value="http://www.cancerstaging.org/" />
+                                  </text>
+                                </externalObservation>
+                              </reference>
+                            </observation>
+                          </entryRelationship>
+                          <!-- COLON TNM METASTASIS(M)Category -->
+                          <entryRelationship typeCode="COMP">
+                            <observation classCode="OBS" moodCode="EVN">
+                              <!-- Colon TNM Metastasis Category TemplateID -->
+                              <templateId root="2.16.840.1.113883.10.20.30.3.57" />
+                              <id root="08eca3aa-e4a6-4dc3-9d59-1d452e5b6b20" />
+                              <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" code="59522-3"
+                                displayName="Derived American Joint Committee on Cancer-7 M descriptor " />
+                              <statusCode code="completed" />
+                              <effectiveTime>
+                                <low value="20120104" />
+                              </effectiveTime>
+                              <value xsi:type="CD" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"
+                                code="436331000124104" displayName="M1: Distant metastasis (finding)" />
+                              <reference typeCode="REFR">
+                                <externalObservation classCode="OBS" moodCode="EVN">
+                                  <text mediaType="text">
+                                    <reference value="http://www.cancerstaging.org/" />
+                                  </text>
+                                </externalObservation>
+                              </reference>
+                            </observation>
+                          </entryRelationship>
+                        </observation>
+                      </entryRelationship>
+                    </act>
+                  </entryRelationship>
+                  <!-- POST TREATMENT DISEASE STATUS -->
+                  <entryRelationship typeCode="COMP">
+                    <observation classCode="OBS" moodCode="EVN">
+                      <!-- Post Treatment Disease Status (V2) TemplateID-->
+                      <templateId root="2.16.840.1.113883.10.20.30.3.29" extension="2014-06-09" />
+                      <id nullFlavor="NI" />
+                      <code code="59532-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                        displayName="Derived Post treatment -7 stage group cancer" />
+                      <statusCode code="completed" />
+                      <effectiveTime value="20120707" />
+                      <value xsi:type="CD" code="58184002" codeSystem="2.16.840.1.113883.6.96"
+                        codeSystemName="SNOMED CT" displayName="recurrent disease" />
+                    </observation>
+                  </entryRelationship>
+                  <!-- CANCER DETECTION -->
+                  <entryRelationship typeCode="REFR">
+                    <observation classCode="OBS" moodCode="EVN">
+                      <!-- Cancer Detection Observation -->
+                      <templateId root="2.16.840.1.113883.10.20.30.3.68" />
+                      <id nullFlavor="NI" />
+                      <code code="75692-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                        displayName="Cancer detection basis" />
+                      <statusCode code="completed" />
+                      <value xsi:type="CD" code="360156006" codeSystem="2.16.840.1.113883.6.1"
+                        codeSystemName="SNOMED CT" displayName="Screening" />
+                    </observation>
+                  </entryRelationship>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+
+          <entry>
+            <!-- Co-Morbid Conditions  -->
+            <act classCode="ACT" moodCode="EVN">
+              <!-- [C-CDA 2.1] Problem Concern Act (V3) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.3" />
+              <id root="ba27f335-8ef9-41b7-be1c-2f9e81b41e5c" />
+              <code code="CONC" codeSystem="2.16.840.1.113883.5.6" displayName="Concern" />
+              <statusCode code="active" />
+              <effectiveTime>
+                <low value="20120103" />
+                <high nullFlavor="NA" />
+              </effectiveTime>
+              <entryRelationship typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <!-- [C-CDA 2.1] Problem Observation (V3) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01" />
+                  <id root="3ad0d57b-57c0-4f46-9d2f-17678c254521" />
+                  <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"
+                    displayName="Diagnosis">
+                    <translation code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                      displayName="Diagnosis" />
+                  </code>
+                  <text>
+                    <reference value="#diagnosis1" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime>
+                    <low value="20120103" />
+                  </effectiveTime>
+                  <value xsi:type="CD" code="195967001" codeSystem="2.16.840.1.113883.6.96" displayName="Asthma" />
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+          <entry>
+            <!-- Co-Morbid Conditions  -->
+            <act classCode="ACT" moodCode="EVN">
+              <!-- [C-CDA 2.1] Problem Concern Act (V3) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.3" />
+              <id root="ba27f335-8ef9-41b7-be1c-2f9e81b41e5c" />
+              <code code="CONC" codeSystem="2.16.840.1.113883.5.6" displayName="Concern" />
+              <statusCode code="active" />
+              <effectiveTime>
+                <low value="20120103" />
+                <high nullFlavor="NA" />
+              </effectiveTime>
+              <entryRelationship typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <!-- [C-CDA 2.1] Problem Observation (V3) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01" />
+                  <id root="3ad0d57b-57c0-4f46-9d2f-17678c254521" />
+                  <code code="282291009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"
+                    displayName="Diagnosis">
+                    <translation code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                      displayName="Diagnosis" />
+                  </code>
+                  <text>
+                    <reference value="#diagnosis2" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime>
+                    <low value="20120103" />
+                  </effectiveTime>
+                  <value xsi:type="CD" code="42343007" codeSystem="2.16.840.1.113883.6.96"
+                    displayName="congestive heart failure (disorder)" />
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+        </section>
+      </component>
+      <!--
+		********************************************************
+		RESULTS SECTION 
+		********************************************************
+	-->
+      <component>
+        <!--RESULT SECTION -->
+        <section>
+          <!-- [C-CDA 2.1] Results Section (entries optional) (V3) -->
+          <templateId root="2.16.840.1.113883.10.20.22.2.3" extension="2015-08-01" />
+          <!-- Result Section CCTPS (V2) -->
+          <templateId root="2.16.840.1.113883.10.20.30.2.11" extension="2015-12-01" />
+          <code code="30954-2" codeSystem="2.16.840.1.113883.6.1" />
+          <title>RESULTS</title>
+          <text>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Test</th>
+                  <th>Date</th>
+                  <th>Method</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Carcinoembryonic Antigen</td>
+                  <td>April 30, 2012</td>
+                  <td />
+                  <td>10 mcg/L</td>
+                </tr>
+                <tr>
+                  <td>Carcinoembryonic Antigen</td>
+                  <td>April 30, 2013</td>
+                  <td />
+                  <td>1 mcg/L</td>
+                </tr>
+                <tr>
+                  <td>Perineural Invasion</td>
+                  <td>April 30, 2012</td>
+                  <td />
+                  <td>Positive</td>
+                </tr>
+                <tr>
+                  <td>Microsatellite Instability</td>
+                  <td>April 30, 2012</td>
+                  <td>IHC</td>
+                  <td>Negative</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <!-- Colon Cancer Evaluative Tests Organizer -->
+          <entry>
+            <organizer classCode="CLUSTER" moodCode="EVN">
+              <!-- [C-CDA 2.1] Result Organizer (V3) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.1" extension="2015-08-01" />
+              <!-- Colon Cancer Evaluative Tests Organizer (V2) -->
+              <templateId root="2.16.840.1.113883.10.20.30.3.61" extension="2015-12-01" />
+              <id root="107c2dc0-67a5-11db-bd13-0800200c9a66" />
+              <code code="21924-6" displayName="Tumor Marker Cancer" codeSystem="2.16.840.1.113883.6.1"
+                codeSystemName="LOINC" />
+              <statusCode code="completed" />
+              <!-- Carcinoembryonic Antigen Test Observation -->
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <!-- [C-CDA 2.1] Result Observation (V3) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01" />
+                  <!-- Carcinoembryonic Antigen Test Observation (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.62" extension="2015-12-01" />
+                  <id root="107c2dc0-67a5-11db-bd13-0800200c9a66" />
+                  <code code="2039-6" displayName="Carcinoembryonic Ag [Mass/volume] in Serum or Plasma"
+                    codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+                  <statusCode code="completed" />
+                  <effectiveTime value="20120430" />
+                  <value xsi:type="PQ" value="10" unit="mcg/L" />
+                  <interpretationCode code="POS" codeSystem="2.16.840.1.113883.5.83" displayName="positive" />
+                </observation>
+              </component>
+              <!-- Carcinoembryonic Antigen Test Observation -->
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <!-- [C-CDA 2.1] Result Observation (V3) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01" />
+                  <!-- Carcinoembryonic Antigen Test Observation (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.62" extension="2015-12-01" />
+                  <id root="107c2dc0-67a5-11db-bd13-080020052148" />
+                  <code code="2039-6" displayName="Carcinoembryonic Ag [Mass/volume] in Serum or Plasma"
+                    codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+                  <statusCode code="completed" />
+                  <effectiveTime value="20130430" />
+                  <value xsi:type="PQ" value="1" unit="mcg/L" />
+                  <interpretationCode code="NEG" codeSystem="2.16.840.1.113883.5.83" displayName="negative" />
+                </observation>
+              </component>
+              <!-- Perineural Invasion Test Observation -->
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <!-- [C-CDA 2.1] Result Observation (V3) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01" />
+                  <!-- Perineural Invasion Test Observation (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.63" extension="2015-12-01" />
+                  <id root="107c2dc0-67a5-11db-bd13-0800200c9a66" />
+                  <code code="33741-0" displayName="Perineural Invasion" codeSystem="2.16.840.1.113883.6.1"
+                    codeSystemName="LOINC" />
+                  <statusCode code="completed" />
+                  <effectiveTime value="20120430" />
+                  <value xsi:type="CD" code="10828004" displayName="Positive" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMED CT" />
+                  <interpretationCode code="POS" codeSystem="2.16.840.1.113883.5.83" displayName="Positive" />
+                </observation>
+              </component>
+              <!-- Microsatellite Instability Test Observation -->
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <!-- [C-CDA 2.1] Result Observation (V3) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01" />
+                  <!-- Microsatellite Instability Test Observation (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.64" extension="2015-12-01" />
+                  <id root="107c2dc0-67a5-11db-bd13-0800200c9a66" />
+                  <code code="43368-0"
+                    displayName="Microsatellite instability [Identifier] in Tissue by Molecular genetics method"
+                    codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+                  <statusCode code="completed" />
+                  <effectiveTime value="20120430" />
+                  <value xsi:type="CD" code="260385009" displayName="Negative" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMED CT" />
+                  <interpretationCode code="NEG" codeSystem="2.16.840.1.113883.5.83" displayName="Negative" />
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+        </section>
+      </component>
+
+      <!-- 
+				
+			
+	
+********************************************************
+
+FUNCTIONAL STATUS CCTPS
+
+********************************************************
+-->
+      <component>
+        <section>
+          <!-- [C-CDA 2.1] Functional Status Section (V2) -->
+          <templateId root="2.16.840.1.113883.10.20.22.2.14" extension="2014-06-09" />
+          <!-- Functional Status Section CCTPS (V2) -->
+          <templateId root="2.16.840.1.113883.10.20.30.2.14" extension="2015-12-01" />
+          <code code="47420-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Functional Status" />
+          <title>FUNCTIONAL STATUS</title>
+          <text>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Type of Assessment</th>
+                  <th>Effective Dates</th>
+                  <th>Results of Evaluation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ECOG Performance Score (indicates the pre treatment performance score)</td>
+                  <td>March 11,2012</td>
+                  <td><content ID="FUNC1" />Grade 2</td>
+                </tr>
+                <tr>
+                  <td>ECOG Performance Score (indicates the posttreatment performance score)</td>
+                  <td>December 11,2012</td>
+                  <td><content ID="FUNC2" />Grade 4</td>
+                </tr>
+                <tr>
+                  <td>National Cancer Institute(NCI) Common Toxicity Criteria CTC)</td>
+                  <td>December 11,2012</td>
+                  <td><content ID="FUNC3" />Interfering with activities of daily living, Grade 3</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </text>
+          <entry>
+
+            <!-- ECOG Performance Score before chemo-->
+            <observation classCode="OBS" moodCode="EVN">
+              <!-- ECOG Assessment Scale Observation-->
+              <templateId root="2.16.840.1.113883.10.20.30.3.66" />
+              <id root="b63a8636-cfff-4461-b018-40ba58ba8b32" />
+              <code code="42800-3" displayName="ECOG performance status grade Observed"
+                codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+              <text>
+                <reference value="#FUNC1" />
+              </text>
+              <statusCode code="completed" />
+              <effectiveTime value="20120311" />
+              <value xsi:type="CD" code="422894000"
+                displayName=" Eastern Cooperative Oncology Group performance status - grade 2 "
+                codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+              <author typeCode="AUT">
+                <time value="201307061145-0800" />
+                <assignedAuthor>
+                  <id extension="555555555" root="2.16.840.1.113883.4.6" />
+                  <code code="207QA0505X" displayName="Adult Medicine" codeSystem="2.16.840.1.113883.6.101"
+                    codeSystemName="NUCC" />
+                </assignedAuthor>
+              </author>
+            </observation>
+          </entry>
+          <!-- ECOG Performance Score before chemo-->
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <!-- ECOG Assessment Scale Observation-->
+              <templateId root="2.16.840.1.113883.10.20.30.3.66" />
+              <id root="b63a8636-cfff-4461-b018-40ba58ba8b34" />
+              <code code="42800-3" displayName="ECOG performance status grade Observed"
+                codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" />
+              <text>
+                <reference value="#FUNC2" />
+              </text>
+              <statusCode code="completed" />
+              <effectiveTime value="20121211" />
+              <value xsi:type="CD" code="423237006"
+                displayName=" Eastern Cooperative Oncology Group performance status - grade 4 "
+                codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+            </observation>
+          </entry>
+          <!-- Neuropathy Grade at End of Treatment-->
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <!-- Neuropathy Grade Observation -->
+              <templateId root="2.16.840.1.113883.10.20.30.3.67" />
+              <id root="b63a8636-cfff-4461-b018-40ba58ba8b33" />
+              <code code="75691-6" displayName="Peripheral sensory neuropathy grade" codeSystem="2.16.840.1.113883.6.1"
+                codeSystemName="LOINC" />
+              <text>
+                <reference value="#FUNC3" />
+              </text>
+              <statusCode code="completed" />
+              <effectiveTime value="20121211" />
+              <value xsi:type="CD" code="446421000124109"
+                displayName="Common terminology criteria for adverse events grade 2 (finding); moderate; minimal, local or noninvasive intervention indicated; limiting age-appropriate instrumental activities of daily living"
+                codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+            </observation>
+          </entry>
+        </section>
+      </component>
+      <!--
+		
+********************************************************
+Vital Signs section CTPS
+********************************************************
+			-->
+      <!-- Note: "Pre and Post Treatment" vital signs are not represented.  For simplification and consistency, VS with their respective dates only should be sent. 
+				This includes - "differences between" eg weight change between weights - these can be caclulated by the recieving system or person -->
+      <component>
+        <!--  VITAL SIGNS SECTION CTPS-->
+        <section>
+          <!-- [C-CDA 2.1] Vital Signs Section (entries optional) (V3) -->
+          <templateId root="2.16.840.1.113883.10.20.22.2.4" extension="2015-08-01" />
+          <!-- Vital Signs Section CTPS (V3)  -->
+          <templateId root="2.16.840.1.113883.10.20.30.2.5" extension="2015-12-01" />
+          <code code="8716-3" displayName="Vital signs" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC">
+            <originalText>Vital Signs</originalText>
+          </code>
+          <title>VITAL SIGNS</title>
+          <text>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Vital</th>
+                  <th>Value</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td ID="O-3" align="left">Body Height</td>
+                  <td>152.4 cm</td>
+                  <td>Apr 7, 2012</td>
+                </tr>
+                <tr>
+                  <td ID="O-4" align="left">Body Weight</td>
+                  <td>45 kg</td>
+                  <td>Apr 7, 2012</td>
+                </tr>
+                <tr>
+                  <td ID="O-5" align="left">Body Surface Area</td>
+                  <td>1.31 m2</td>
+                  <td>Apr 7, 2012</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry>
+            <organizer classCode="CLUSTER" moodCode="EVN">
+              <!-- [C-CDA 2.1] Vital Sign Organizer (V3) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.26" extension="2015-08-01" />
+              <!-- Vital Signs Organizer CTPS (V3)-->
+              <templateId root="2.16.840.1.113883.10.20.30.3.25" extension="2015-12-01" />
+              <id root="16f81685-cb5b-470b-9823-fca324968479" />
+              <code code="46680005" codeSystem="2.16.840.1.113883.6.96" displayName="Vital Signs"
+                codeSystemName="SNOMED CT">
+                <originalText>Vital Signs</originalText>
+              </code>
+              <statusCode code="completed" />
+              <effectiveTime value="20120407" />
+              <component>
+                <!-- BODY HEIGHT -->
+                <observation classCode="OBS" moodCode="EVN">
+                  <!-- [C-CDA 2.1] Vital Sign Observation (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09" />
+                  <!-- Body Height (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.26" extension="2015-12-01" />
+                  <id root="c6f88321-67ad-11db-bd13-0800200c9a66" />
+                  <code code="8302-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Height" />
+                  <text>
+                    <reference value="#height1" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20120407" />
+                  <value xsi:type="PQ" value="152.4" unit="cm" />
+                  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" />
+                </observation>
+              </component>
+              <component>
+                <!-- BODY WEIGHT -->
+                <observation classCode="OBS" moodCode="EVN">
+                  <!-- [C-CDA 2.1] Vital Sign Observation (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09" />
+                  <!-- Body Weight (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.27" extension="2015-12-01" />
+                  <id root="0dec5daa-7095-41d1-be80-75bd58dff2fb" />
+                  <code code="3141-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                    displayName="Weight Measured" />
+                  <text>
+                    <reference value="#weight1" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20120407" />
+                  <value xsi:type="PQ" value="45" unit="kg" />
+                  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" />
+                </observation>
+              </component>
+              <component>
+                <!-- BODY SURFACE AREA -->
+                <observation classCode="OBS" moodCode="EVN">
+                  <!-- [C-CDA 2.1] Vital Sign Observation (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09" />
+                  <!-- Body Surface Area (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.28" extension="2015-12-01" />
+                  <id root="c6f88321-67ad-11db-bd13-0800200c9a66" />
+                  <code code="3140-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                    displayName="BSA (Body Surface Area)" />
+                  <text>
+                    <reference value="#BSA1" />
+                  </text>
+                  <statusCode code="completed" />
+                  <effectiveTime value="20120407" />
+                  <value xsi:type="PQ" value="1.31" unit="m2" />
+                  <interpretationCode code="N" codeSystem="2.16.840.1.113883.5.83" />
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+        </section>
+      </component>
+      <!--
+ ********************************************************
+   Allergies and Intolerances Section 
+ ********************************************************
+                    -->
+      <component>
+        <section>
+          <!-- [C-CDA 2.1] Allergies and Intolerances Section (entries optional) (V3) -->
+          <templateId root="2.16.840.1.113883.10.20.22.2.6" extension="2015-08-01" />
+          <code code="48765-2" codeSystem="2.16.840.1.113883.6.1" />
+          <title>ALLERGIES, ADVERSE REACTIONS, ALERTS</title>
+          <text>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Substance</th>
+                  <th>Reaction</th>
+                  <th>Severity</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Codeine</td>
+                  <td>
+                    <content ID="reaction2">Wheezing</content>
+                  </td>
+                  <td>
+                    <content ID="severity2">Moderate</content>
+                  </td>
+                  <td>Active</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.30" extension="2015-08-01" />
+              <!-- [C-CDA 2.1] Allergy Concern Act -->
+              <id root="36e3e930-7b14-11db-9fe1-0800200c9a66" />
+              <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7 ActClass"
+                displayName="Concern" />
+              <statusCode code="active" />
+              <effectiveTime>
+                <low value="20060501" />
+                
+              </effectiveTime>
+              <entryRelationship typeCode="SUBJ">
+                <observation classCode="OBS" moodCode="EVN">
+                  <!-- [C-CDA 2.1] Allergy - Intolerance Observation -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.7" extension="2014-06-09" />
+                  <id root="4adc1020-7b14-11db-9fe1-0800200c9a66" />
+                  <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" />
+                  <statusCode code="completed" />
+                  <effectiveTime>
+                    <low value="20060501" />
+                  </effectiveTime>
+                  <value xsi:type="CD" code="420134006" displayName="Propensity to adverse reactions"
+                    codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT">
+                    <originalText>
+                      <reference value="#reaction2" />
+                    </originalText>
+                  </value>
+                  <participant typeCode="CSM">
+                    <participantRole classCode="MANU">
+                      <playingEntity classCode="MMAT">
+                        <code code="2670" displayName="Codeine" codeSystem="2.16.840.1.113883.6.88"
+                          codeSystemName="RxNorm">
+                          <originalText>
+                            <reference value="#reaction2" />
+                          </originalText>
+                        </code>
+                      </playingEntity>
+                    </participantRole>
+                  </participant>
+                  <entryRelationship typeCode="MFST" inversionInd="true">
+                    <observation classCode="OBS" moodCode="EVN">
+                      <!-- [C-CDA 2.1] Reaction Observation (V2) -->
+                      <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09" />
+                      <id root="4adc1020-7b14-11db-9fe1-0800200c9a64" />
+                      <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" />
+                      <text>
+                        <reference value="#reaction2" />
+                      </text>
+                      <statusCode code="completed" />
+                      <effectiveTime>
+                        <low value="20060501" />
+                        <high nullFlavor="NI" />
+                      </effectiveTime>
+                      <value xsi:type="CD" code="56018004" codeSystem="2.16.840.1.113883.6.96" displayName="Wheezing" />
+                    </observation>
+                  </entryRelationship>
+                  <entryRelationship typeCode="SUBJ" inversionInd="true">
+                    <observation classCode="OBS" moodCode="EVN">
+                      <!-- [C-CDA 2.1] Severity Observation (V2) -->
+                      <templateId root="2.16.840.1.113883.10.20.22.4.8" extension="2014-06-09" />
+                      <id root="9ec15d67-0a04-446c-b971-bf2063958cf1" />
+                      <code code="SEV" displayName="Severity Observation" codeSystem="2.16.840.1.113883.5.4"
+                        codeSystemName="ActCode" />
+                      <text>
+                        <reference value="#severity2" />
+                      </text>
+                      <statusCode code="completed" />
+                      <value xsi:type="CD" code="6736007" displayName="Moderate" codeSystem="2.16.840.1.113883.6.96"
+                        codeSystemName="SNOMED CT" />
+                    </observation>
+                  </entryRelationship>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+        </section>
+      </component>
+      <!--
+			
+			
+ ********************************************************
+ Encounters CTPS
+ ********************************************************
+-->
+      <component>
+        <section>
+          <!-- [C-CDA 2.1] Encounters Section (entries optional) (V3) -->
+          <templateId root="2.16.840.1.113883.10.20.22.2.22" extension="2015-08-01" />
+          <!-- Encounters Section CTPS (V3) -->
+          <templateId root="2.16.840.1.113883.10.20.30.2.9" extension="2015-12-01" />
+          <code code="46240-8" codeSystem="2.16.840.1.113883.6.1" />
+          <title>ENCOUNTERS</title>
+          <text>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Encounter</th>
+                  <th>Location</th>
+                  <th>Admission Date</th>
+                  <th>Discharge Date</th>
+                  <th>Reason</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Inpatient encounter</td>
+                  <td>Good Health Hospital</td>
+                  <td>November 9, 2012</td>
+                  <td>November 30, 2012</td>
+                  <td>Toxicity due to chemotherapy</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <entry>
+            <encounter classCode="ENC" moodCode="EVN">
+              <!-- [C-CDA 2.1] Encounter Activity (V3) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.49" extension="2015-08-01" />
+              <!-- Hospitalization with Reason (V2) -->
+              <templateId root="2.16.840.1.113883.10.20.30.3.36" extension="2015-12-01" />
+              <id root="dd21f8ce-4cb4-43f7-b735-e64eb02b927c" />
+              <code codeSystem="2.16.840.1.113883.5.4" code="IMP" displayName="Inpatient encounter" />
+              <effectiveTime>
+                <!-- Dates of admission and discharge -->
+                <low value="20121109" />
+                <high value="20121130" />
+              </effectiveTime>
+              <!-- This states that the reason for admission was due to chemotherapy toxicity -->
+              <entryRelationship typeCode="RSON">
+                <observation classCode="OBS" moodCode="EVN">
+                  <!-- [C-CDA 2.1] Indication template -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09" />
+                  <!-- Observation ID equals an ID on the problem list -->
+                  <id root="43faccd9-5b6e-45f3-b007-856e96b3d84d" />
+                  <code code="404684003" displayName="Finding" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMED CT" />
+                  <statusCode code="completed" />
+                  <value xsi:type="CD" code="399213007" codeSystem="2.16.840.1.113883.6.96"
+                    displayName="toxicity due to chemotherapy" />
+                </observation>
+              </entryRelationship>
+            </encounter>
+          </entry>
+        </section>
+      </component>
+      <!--	
+			
+********************************************************
+NUTRITION SECTION CCTPS
+********************************************************
+			-->
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.30.2.16" />
+          <code code="61144-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+            displayName="Diet and Nutrition" />
+          <title>NUTRITION SECTION</title>
+          <text>
+            <paragraph>Nutritional Status: Good</paragraph>
+            <paragraph>Date of observation: March 1, 2013</paragraph>
+            <br />
+            <paragraph>Nutritional Status: Fair</paragraph>
+            <paragraph>Date of observation: June 1, 2013</paragraph>
+          </text>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <!--  Nutritional Status Observation CTPS -->
+              <templateId root="2.16.840.1.113883.10.20.30.3.70" />
+              <id root="c12ecaaf-53f8-4593-8f79-359aeaa3948b" />
+              <code xsi:type="CD" code="75305-3" displayName="nutritional status" codeSystem="2.16.840.1.113883.6.1"
+                codeSystemName="LOINC">
+                <originalText>Nutritional Status</originalText>
+              </code>
+              <statusCode code="completed" />
+              <effectiveTime value="201300301" />
+              <value xsi:type="ST">good</value>
+            </observation>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <!--  Nutritional Status Observation CTPS -->
+              <templateId root="2.16.840.1.113883.10.20.30.3.70" />
+              <id root="c12ecaaf-53f8-4593-8f79-359aeaa3948b" />
+              <code xsi:type="CD" code="75305-3" displayName="nutritional status" codeSystem="2.16.840.1.113883.6.1"
+                codeSystemName="LOINC">
+                <originalText>Nutritional Status</originalText>
+              </code>
+              <statusCode code="completed" />
+              <effectiveTime value="20130601" />
+              <value xsi:type="ST">poor</value>
+            </observation>
+          </entry>
+        </section>
+      </component>
+
+      <!--
+                ********************************************************
+                PLAN OF TREATMENT CCTPS
+                ********************************************************
+       -->
+      <component>
+        <section>
+          <!-- [C-CDA 2.1] Plan of Treatment Section (V2) -->
+          <templateId root="2.16.840.1.113883.10.20.22.2.10" extension="2014-06-09" />
+          <!-- Plan of Treatement Section CCTPS (V2) -->
+          <templateId root="2.16.840.1.113883.10.20.30.2.15" extension="2015-12-01" />
+          <code code="18776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Plan of Treatment" />
+          <title>PLAN FOR FUTURE TREATMENT</title>
+          <!-- 
+            Narrative text should contain explicit and clear text describing the planned 
+            regimen.
+						Note: complete coded modeling of the intricacies of antineoplastic regimen 
+						plans/orders are not intended to be reflected in the contained Medication 
+						activities.  Antineoplastic regimen details and timing are very complex.  
+						Complete coded representation of the details is unlikely to be properly 
+						understood by a receiving	EHR and could be dangerous and is beyond the 
+						scope of this template and plan summary.
+          -->
+
+
+          <text>
+            <paragraph>
+              <caption styleCode="Bold">Adjuvant Treament Medications Plan</caption>
+            </paragraph>
+            
+            <paragraph>Start Date: November 8, 2012	</paragraph>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Planned Additional Treatment</th>
+                  <th>Planned Route</th>
+                  <th>Planned Dose</th>
+                  <th>Planned Schedule</th>
+                  <th>Planned Duration</th>
+                  <th>Planned Regimen</th>
+                  <th>Clinical Trial Drug</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Oxaliplatin</td>
+                  <td>IV</td>
+                  <td>85 mg/m2</td>
+                  <td>q 2 weeks for 6 cycles</td>
+                  <td>2 weeks</td>
+                  <td>mFOLFOX6</td>
+                  <td>Yes</td>
+
+                </tr>
+                <tr>
+                  <td>Leucovorin</td>
+                  <td>IV</td>
+                  <td>400 mg/m2 </td>
+                  <td>q 2 weeks for 6 cycles</td>
+                  <td>2 weeks</td>
+                  <td>mFOLFOX6</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td>5-Fluorouracil (5-FU)</td>
+                  <td>IV Bolus</td>
+                  <td>400 mg/m2</td>
+                  <td>q 2 weeks for 6 cycles</td>
+                  <td>2 weeks</td>
+                  <td>mFOLFOX6</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td>5-Fluorouracil(5-FU)</td>
+                  <td>IV</td>
+                  <td>2400 mg/m2/46 hours</td>
+                  <td>q 2 weeks for 6 cycles</td>
+                  <td>2 weeks</td>
+                  <td>mFOLFOX6</td>
+                  <td>Yes</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+          <!--	Oxaliplatin 85 mg/m2 IV in 500 ml 5% dextrose injection over 120 min day 1 every 2 weeks for 6 weeks-->
+          <entry>
+            <substanceAdministration classCode="SBADM" moodCode="INT">
+              <!-- [C-CDA 2.1] Planned Medication Activity (V2) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09" />
+              <!-- Planned Antineoplastic Agent (V3)  -->
+              <templateId root="2.16.840.1.113883.10.20.30.3.51" extension="2015-12-01" />
+              <id root="67a66665-f2e7-429d-a684-cf3d53f3d30c" />
+              <statusCode code="active" />
+              <effectiveTime xsi:type="IVL_TS">
+                <low nullFlavor="NAV" />
+                <high nullFlavor="NAV" />
+              </effectiveTime>
+              <effectiveTime xsi:type="PIVL_TS" operator="A">
+                <phase>
+                  <!-- Over 120 min -->
+                  <width value="120" unit="m" />
+                </phase>
+              </effectiveTime>
+              <!-- every 14 days (2 weeks)-->
+              <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A">
+                <period value="14" unit="d" />
+              </effectiveTime>
+              <!-- Number of recommended cycles, assuming 1 cycle is 4 week and this is done over 6 months-->
+              <repeatNumber value="6" operator="A" />
+              <routeCode code="C38276" displayName="INTRAVENOUS" codeSystem="2.16.840.1.113883.3.26.1.1"
+                codeSystemName="NCI Thesaurus (NCIt)" />
+              <doseQuantity value="85" unit="mg/m2" />
+              <!-- SHALL contain Medication Information  -->
+              <consumable>
+                <manufacturedProduct classCode="MANU">
+                  <!-- [C-CDA 2.1] Medication Information (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23" extension="2014-06-09" />
+                  <manufacturedMaterial>
+                    <code codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" code="351248"
+                      displayName="oxaliplatin 5 MG/ML Injectable Solution">
+                      <originalText>oxaliplatin 85mg/m2 IV in 500 ml 5% dextrose
+                        injection</originalText>
+                    </code>
+                    <!-- Brand Name -->
+                    <name>Eloxatin</name>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+              <entryRelationship typeCode="REFR">
+                <act classCode="ACT" moodCode="EVN">
+                  <!-- Antineoplastic Regimen/Protocol (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.50" extension="2015-12-01" />
+                  <code code="133877004" codeSystem="2.16.840.1.113883.6.96" displayName="Therapeutic regimen" codeSystemName="SNOMED CT">
+                    <originalText>Some relevant planned regimen</originalText>
+                  </code>
+                  <statusCode code="completed" />
+                  <reference typeCode="REFR">
+                    <externalDocument classCode="DOC" moodCode="EVN">
+                      <!--This would be an identifier for the regimen protocol -->
+                      <id root="4e842410-8698-11e2-9e96-0800200c9a66" />
+                      <text mediaType="text"><reference
+                        value="http://www.chemotherapyadvisor.com/colon-cancer-treatment-regimens/article/218158/"
+                      />
+                      </text>
+                    </externalDocument>
+                  </reference>
+                </act>
+              </entryRelationship>
+              <!-- If the following entry relationship is present it indicates that this 
+                   treatment is part of a clinical trial -->
+              <entryRelationship typeCode="REFR">
+                <act classCode="ACT" moodCode="EVN">
+                  <!-- Clinical Drug Trial -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.4" />
+                  <code code="185922005" displayName="clinical drug trials" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMED CT" />
+                  <statusCode code="completed" />
+                </act>
+              </entryRelationship>
+            </substanceAdministration>
+          </entry>
+          <!--	Leucovorin 400 mg/m2 IV in 500 ml 5% dextrose injection over 120 min day 1 every 2 weeks for 6 weeks-->
+          <entry>
+            <substanceAdministration classCode="SBADM" moodCode="INT">
+              <!-- [C-CDA 2.1] Planned Medication Activity (V2) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09" />
+              <!-- Planned Antineoplastic Agent (V3)  -->
+              <templateId root="2.16.840.1.113883.10.20.30.3.51" extension="2015-12-01" />
+              <id root="67a66665-f2e7-429d-a684-cf3d53f3d30c" />
+              <statusCode code="active" />
+              <effectiveTime xsi:type="IVL_TS">
+                <low nullFlavor="NAV" />
+                <high nullFlavor="NAV" />
+              </effectiveTime>
+              <effectiveTime xsi:type="PIVL_TS" operator="A">
+                <phase>
+                  <!-- Over 120 min -->
+                  <width value="120" unit="m" />
+                </phase>
+              </effectiveTime>
+              <!-- every 14 days (2 weeks)-->
+              <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A">
+                <period value="14" unit="d" />
+              </effectiveTime>
+              <!-- Number of recommended cycles, assuming 1 cycle is 4 week and this is done over 6 months-->
+              <repeatNumber value="6" operator="A" />
+              <routeCode code="C38276" displayName="INTRAVENOUS" codeSystem="2.16.840.1.113883.3.26.1.1"
+                codeSystemName="NCI Thesaurus (NCIt)" />
+              <doseQuantity value="400" unit="mg/m2" />
+              <!-- SHALL contain Medication Information  -->
+              <consumable>
+                <manufacturedProduct classCode="MANU">
+                  <!-- [C-CDA 2.1] Medication Information (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23" extension="2014-06-09" />
+                  <manufacturedMaterial>
+                    <code codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" code="311282"
+                      displayName="Leucovorin 10 MG/ML Injectable Solution">
+                      <originalText>Leucovorin 400 mg/m2 IV in 500 ml 5% dextrose injection
+                      </originalText>
+                    </code>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+              <entryRelationship typeCode="REFR">
+                <act classCode="ACT" moodCode="EVN">
+                  <!-- Antineoplastic Regimen/Protocol (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.50" extension="2015-12-01" />
+                  <code code="133877004" codeSystem="2.16.840.1.113883.6.96" displayName="Therapeutic regimen" codeSystemName="SNOMED CT">
+                    <originalText>Some relevant planned regimen</originalText>
+                  </code>
+                  <statusCode code="completed" />
+                  <reference typeCode="REFR">
+                    <externalDocument classCode="DOC" moodCode="EVN">
+                      <!--This would be an identifier for the regimen protocol -->
+                      <id root="4e842410-8698-11e2-9e96-0800200c9a66" />
+                      <text mediaType="text"><reference
+                        value="http://www.chemotherapyadvisor.com/colon-cancer-treatment-regimens/article/218158/"
+                      />
+                      </text>
+                    </externalDocument>
+                  </reference>
+                </act>
+              </entryRelationship>
+              <!-- If the following entry relationship is present it indicates that this 
+                   treatment is part of a clinical trial -->
+              <entryRelationship typeCode="REFR">
+                <act classCode="ACT" moodCode="EVN">
+                  <!-- Clinical Drug Trial -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.4" />
+                  <code code="185922005" displayName="clinical drug trials" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMED CT" />
+                  <statusCode code="completed" />
+                </act>
+              </entryRelationship>
+            </substanceAdministration>
+          </entry>
+          <!--	5-FU 400mg/m2 IV bolus on day 1 every 2 weeks for 6 weeks-->
+          <entry>
+            <substanceAdministration classCode="SBADM" moodCode="INT">
+              <!-- [C-CDA 2.1] Planned Medication Activity (V2) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09" />
+              <!-- Planned Antineoplastic Agent (V3)  -->
+              <templateId root="2.16.840.1.113883.10.20.30.3.51" extension="2015-12-01" />
+              <id root="67a66665-f2e7-429d-a684-cf3d53f3d30c" />
+              <statusCode code="active" />
+              <effectiveTime xsi:type="IVL_TS">
+                <low nullFlavor="NAV" />
+                <high nullFlavor="NAV" />
+              </effectiveTime>
+              <effectiveTime xsi:type="PIVL_TS" operator="A">
+                <phase>
+                  <!-- Over 2 min -->
+                  <width value="2" unit="m" />
+                </phase>
+              </effectiveTime>
+              <!-- every 14 days (2 weeks)-->
+              <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A">
+                <period value="14" unit="d" />
+              </effectiveTime>
+              <!-- Number of recommended cycles, assuming 1 cycle is 4 week and this is done over 6 months-->
+              <repeatNumber value="6" operator="A" />
+              <routeCode code="C38276" displayName="INTRAVENOUS" codeSystem="2.16.840.1.113883.3.26.1.1"
+                codeSystemName="NCI Thesaurus (NCIt)" />
+              <doseQuantity value="400" unit="mg" />
+              <consumable>
+                <manufacturedProduct classCode="MANU">
+                  <!-- [C-CDA 2.1] Medication Information (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23" extension="2014-06-09" />
+                  <manufacturedMaterial>
+                    <code codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" code="372228"
+                      displayName="Fluorouracil Injectable Solution">
+                      <originalText>5-fluorouracil 400 mg/m2 IV bolus over 2 to 4 minutes in 5%
+                        Dextrose</originalText>
+                    </code>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+              <entryRelationship typeCode="REFR">
+                <act classCode="ACT" moodCode="EVN">
+                  <!-- Antineoplastic Regimen/Protocol (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.50" extension="2015-12-01" />
+                  <code code="133877004" codeSystem="2.16.840.1.113883.6.96" displayName="Therapeutic regimen" codeSystemName="SNOMED CT">
+                    <originalText>Some relevant planned regimen</originalText>
+                  </code>
+                  <statusCode code="completed" />
+                  <reference typeCode="REFR">
+                    <externalDocument classCode="DOC" moodCode="EVN">
+                      <!--This would be an identifier for the regimen protocol -->
+                      <id root="4e842410-8698-11e2-9e96-0800200c9a66" />
+                      <text mediaType="text"><reference
+                        value="http://www.chemotherapyadvisor.com/colon-cancer-treatment-regimens/article/218158/"
+                      />
+                      </text>
+                    </externalDocument>
+                  </reference>
+                </act>
+              </entryRelationship>
+              <!-- If the following entry relationship is present it indicates that this 
+                   treatment is part of a clinical trial -->
+              <entryRelationship typeCode="REFR">
+                <act classCode="ACT" moodCode="EVN">
+                  <!-- Clinical Drug Trial -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.4" />
+                  <code code="185922005" displayName="clinical drug trials" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMED CT" />
+                  <statusCode code="completed" />
+                </act>
+              </entryRelationship>
+            </substanceAdministration>
+          </entry>
+          <!--	5-FU 2400 mg/m2 IV over 48 hours every 2 weeks for 6 weeks-->
+          <entry>
+            <substanceAdministration classCode="SBADM" moodCode="INT">
+              <!-- [C-CDA 2.1] Planned Medication Activity (V2) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09" />
+              <!-- Planned Antineoplastic Agent (V3)  -->
+              <templateId root="2.16.840.1.113883.10.20.30.3.51" extension="2015-12-01" />
+              <id root="67a66665-f2e7-429d-a684-cf3d53f3d30c" />
+              <statusCode code="active" />
+              <effectiveTime xsi:type="IVL_TS">
+                <low nullFlavor="NAV" />
+                <high nullFlavor="NAV" />
+              </effectiveTime>
+              <effectiveTime xsi:type="PIVL_TS" operator="A">
+                <phase>
+                  <!-- Over 46 hour -->
+                  <width value="46" unit="h" />
+                </phase>
+              </effectiveTime>
+              <!-- every 14 days (2 weeks)-->
+              <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A">
+                <period value="14" unit="d" />
+              </effectiveTime>
+              <!-- Number of recommended cycles, assuming 1 cycle is 4 week and this is done over 6 months-->
+              <repeatNumber value="6" operator="A" />
+              <routeCode code="C38276" displayName="INTRAVENOUS" codeSystem="2.16.840.1.113883.3.26.1.1"
+                codeSystemName="NCI Thesaurus (NCIt)" />
+              <doseQuantity value="400" unit="mg" />
+              <consumable>
+                <manufacturedProduct classCode="MANU">
+                  <!-- [C-CDA 2.1] Medication Information (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23" extension="2014-06-09" />
+                  <manufacturedMaterial>
+                    <code codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" code="372228"
+                      displayName="Fluorouracil Injectable Solution">
+                      <originalText>5-fluorouracil 2400 mg/m2 IV 46 hours in 5%
+                        Dextrose</originalText>
+                    </code>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+              <entryRelationship typeCode="REFR">
+                <act classCode="ACT" moodCode="EVN">
+                  <!-- Antineoplastic Regimen/Protocol (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.50" extension="2015-12-01" />
+                  <code code="133877004" codeSystem="2.16.840.1.113883.6.96" displayName="Therapeutic regimen" codeSystemName="SNOMED CT">
+                    <originalText>Some relevant planned regimen</originalText>
+                  </code>
+                  <statusCode code="completed" />
+                  <reference typeCode="REFR">
+                    <externalDocument classCode="DOC" moodCode="EVN">
+                      <!--This would be an identifier for the regimen protocol -->
+                      <id root="4e842410-8698-11e2-9e96-0800200c9a66" />
+                      <text mediaType="text"><reference
+                        value="http://www.chemotherapyadvisor.com/colon-cancer-treatment-regimens/article/218158/"
+                      />
+                      </text>
+                    </externalDocument>
+                  </reference>
+                </act>
+              </entryRelationship>
+              <!-- If the following entry relationship is present it indicates that this 
+                   treatment is part of a clinical trial -->
+              <entryRelationship typeCode="REFR">
+                <act classCode="ACT" moodCode="EVN">
+                  <!-- Clinical Drug Trial -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.4" />
+                  <code code="185922005" displayName="clinical drug trials" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMED CT" />
+                  <statusCode code="completed" />
+                </act>
+              </entryRelationship>
+            </substanceAdministration>
+          </entry>
+          
+        </section>
+      </component>
+      <!--
+	     ********************************************************
+		   MEDICATIONS SECTION CTPS (V2)
+	    ********************************************************
+	    -->
+      <component>
+        <section>
+          <!-- [C-CDA 2.1] Medications Section (entries optional) (V2) -->
+          <templateId root="2.16.840.1.113883.10.20.22.2.1" extension="2014-06-09" />
+          <!-- Medications Section CTPS (V2) -->
+          <templateId root="2.16.840.1.113883.10.20.30.2.12" extension="2015-12-01" />
+          <code code="10160-0" codeSystem="2.16.840.1.113883.6.1" displayName="History of medication use"
+            codeSystemName="LOINC" />
+          <title>MEDICATIONS</title>
+          <text>
+            <paragraph>
+              <caption>Special Circumstances</caption>
+            </paragraph>
+            <paragraph>Special Circumstances surrounding the the treatment and comments about issues related to supply issues may be noted here.</paragraph>
+            <br />
+            <paragraph>
+              <caption styleCode="Bold">Current and Chronic Medications</caption>
+            </paragraph>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Medication</th>
+                  <th>Directions</th>
+                  <th>Start Date</th>
+                  <th>Status</th>
+                  <th>Indications</th>
+                  <th>Fill Instructions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <content ID="MedSec_1">Proventil HFA
+										</content>
+                  </td>
+                  <td>0.09 MG/ACTUAT inhalant solution, 2 puffs QID PRN
+										wheezing</td>
+                  <td>20070103</td>
+                  <td>Active</td>
+                  <td>Pneumonia (233604007 SNOMED CT)</td>
+                  <td>Generic Substitition Allowed</td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
+            <paragraph>
+              <caption styleCode="Bold">Adjuvant Treament Summary Medications</caption>
+            </paragraph>
+            <table border="1" width="100%">
+              <thead>
+                <tr>
+                  <th>Antineoplastic (Chemotherapy, Hormonal, Targeted, Immunological/Biological) Agent</th>
+                  <th>Regimen/Protocol Reference</th>
+                  <th>Date ended</th>
+                  <th>Dose Administered</th>
+                  <th>Cycle Number</th>
+                  <th>Reaction/Toxicity</th>
+                  <th>Special Notations about Medication</th>
+                  <th>Clinical Trial Drug</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <content ID="Med1">Oxaliplatin</content>
+                  </td>
+                  <td>mFOLFOX6</td>
+                  <td>85mg/m2 IV </td>
+                  <td>March 8, 2013</td>
+                  <td>8</td>
+                  <td>Stopped for neuropathy</td>
+                  <td />
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td>
+                    <content ID="Med2">Leucovorin</content>
+                  </td>
+                  <td>mFOLFOX6</td>
+                  <td>400 mg/m2 IV</td>
+                  <td>May 8, 2013</td>
+                  <td>12</td>
+                  <td />
+                  <td>Reduced for leukopenia</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td>
+                    <content ID="Med3">5-fluorouracil</content>
+                  </td>
+                  <td>mFOLFOX6</td>
+                  <td>400 mg/m2 IV </td>
+                  <td>May 8, 2013</td>
+                  <td>12</td>
+                  <td />
+                  <td>Reduced for leukopenia</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td>
+                    <content ID="Med4">5-fluorouracil</content>
+                  </td>
+                  <td>mFOLFOX6</td>
+                  <td>2400 mg/m2 </td>
+                  <td>May 8, 2013</td>
+                  <td>12</td>
+                  <td />
+                  <td>Reduced for leukopenia</td>
+                  <td>Yes</td>
+                </tr>
+              </tbody>
+            </table>
+          </text>
+
+          <!-- Represents Medications patient is taking which could include chronic medications. -->
+          <entry typeCode="DRIV">
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <!-- [C-CDA 2.1] Medication Activity (V2) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09" />
+              <id root="cdbd33f0-6cde-11db-9fe1-0800200c9a66" />
+              <text>
+                <reference value="#MedSec_1" />Proventil HFA</text>
+              <statusCode code="completed" />
+              <effectiveTime xsi:type="IVL_TS">
+                <low value="20070103" />
+                <high value="20120515" />
+              </effectiveTime>
+              <effectiveTime xsi:type="PIVL_TS" institutionSpecified="true" operator="A">
+                <period value="6" unit="h" />
+              </effectiveTime>
+              <routeCode code="C38216" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus (NCIt)"
+                displayName="RESPIRATORY (INHALATION)" />
+              <doseQuantity value="1" unit="mg/actuat" />
+              <rateQuantity value="90" unit="ml/min" />
+              <maxDoseQuantity nullFlavor="UNK">
+                <numerator nullFlavor="UNK" />
+                <denominator nullFlavor="UNK" />
+              </maxDoseQuantity>
+              <consumable>
+                <manufacturedProduct classCode="MANU">
+                  <!-- [C-CDA 2.1] Medication Information (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23" extension="2014-06-09" />
+                  <id root="2a620155-9d11-439e-92b3-5d9815ff4ee8" />
+                  <manufacturedMaterial>
+                    <code code="219483" codeSystem="2.16.840.1.113883.6.88" displayName="Proventil HFA">
+                      <originalText>
+                        <reference value="#MedSec_1" />
+                      </originalText>
+                      <translation code="573621" displayName="Proventil 0.09 MG/ACTUAT inhalant solution"
+                        codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" />
+                    </code>
+                  </manufacturedMaterial>
+                  <manufacturerOrganization>
+                    <name>Medication Factory Inc.</name>
+                  </manufacturerOrganization>
+                </manufacturedProduct>
+              </consumable>
+              <performer>
+                <assignedEntity>
+                  <id nullFlavor="NI" />
+                  <addr nullFlavor="UNK" />
+                  <telecom nullFlavor="UNK" />
+                  <representedOrganization>
+                    <id root="2.16.840.1.113883.19.5.9999.1393" />
+                    <name>Community Health and Hospitals</name>
+                    <telecom nullFlavor="UNK" />
+                    <addr nullFlavor="UNK" />
+                  </representedOrganization>
+                </assignedEntity>
+              </performer>
+              <participant typeCode="CSM">
+                <participantRole classCode="MANU">
+                  <!-- [C-CDA 2.1] Drug Vehicle -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.24" />
+                  <code code="412307009" displayName="drug vehicle" codeSystem="2.16.840.1.113883.6.96" />
+                  <playingEntity classCode="MMAT">
+                    <code code="324049" displayName="Aerosol" codeSystem="2.16.840.1.113883.6.88"
+                      codeSystemName="RxNorm" />
+                    <name>Aerosol</name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+              <entryRelationship typeCode="RSON">
+                <observation classCode="OBS" moodCode="EVN">
+                  <!-- [C-CDA 2.1] Indication -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19" />
+                  <id root="db734647-fc99-424c-a864-7e3cda82e703" extension="45665" />
+                  <code code="404684003" displayName="Finding" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMED CT" />
+                  <statusCode code="completed" />
+                  <effectiveTime>
+                    <low value="20070103" />
+                  </effectiveTime>
+                  <value xsi:type="CD" code="233604007" displayName="Pneumonia" codeSystem="2.16.840.1.113883.6.96" />
+                </observation>
+              </entryRelationship>
+              <entryRelationship typeCode="REFR">
+                <supply classCode="SPLY" moodCode="INT">
+                  <!-- [C-CDA 2.1] Medication Supply Order (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.17" extension="2014-06-09" />
+                  <id nullFlavor="NI" />
+                  <statusCode code="completed" />
+                  <effectiveTime xsi:type="IVL_TS">
+                    <low value="20070103" />
+                    <high nullFlavor="UNK" />
+                  </effectiveTime>
+                  <repeatNumber value="1" />
+                  <quantity value="75" />
+                  <product>
+                    <manufacturedProduct classCode="MANU">
+                      <!-- [C-CDA 2.1] Medication Information (V2) -->
+                      <templateId root="2.16.840.1.113883.10.20.22.4.23" extension="2014-06-09" />
+                      <id root="2a620155-9d11-439e-92b3-5d9815ff4ee8" />
+                      <manufacturedMaterial>
+                        <code code="573621" codeSystem="2.16.840.1.113883.6.88"
+                          displayName="Proventil 0.09 MG/ACTUAT inhalant solution">
+                          <originalText>
+                            <reference value="#MedSec_1" />
+                          </originalText>
+                          <translation code="573621" displayName="Proventil 0.09 MG/ACTUAT inhalant solution"
+                            codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" />
+                        </code>
+                      </manufacturedMaterial>
+                      <manufacturerOrganization>
+                        <name>Medication Factory Inc.</name>
+                      </manufacturerOrganization>
+                    </manufacturedProduct>
+                  </product>
+                  <performer>
+                    <assignedEntity>
+                      <id extension="2981823" root="2.16.840.1.113883.19.5.9999.456" />
+                      <addr>
+                        <streetAddressLine>1001 Village
+													Avenue</streetAddressLine>
+                        <city>Portland</city>
+                        <state>OR</state>
+                        <postalCode>99123</postalCode>
+                        <country>US</country>
+                      </addr>
+                    </assignedEntity>
+                  </performer>
+                  <author>
+                    <time nullFlavor="UNK" />
+                    <assignedAuthor>
+                      <id root="2a620155-9d11-439e-92b3-5d9815fe4de8" />
+                      <addr nullFlavor="UNK" />
+                      <telecom nullFlavor="UNK" />
+                      <assignedPerson>
+                        <name>
+                          <prefix>Dr.</prefix>
+                          <given>Henry</given>
+                          <family>Seven</family>
+                        </name>
+                      </assignedPerson>
+                    </assignedAuthor>
+                  </author>
+                  <entryRelationship typeCode="SUBJ" inversionInd="true">
+                    <act classCode="ACT" moodCode="INT">
+                      <!-- [C-CDA 2.1] Instruction (V2) -->
+                      <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09" />
+                      <code code="409073007" codeSystem="2.16.840.1.113883.6.96" displayName="instruction" />
+                      <text>
+                        <reference value="#MedSec_1" /> label in spanish </text>
+                      <statusCode code="completed" />
+                    </act>
+                  </entryRelationship>
+                </supply>
+              </entryRelationship>
+              <entryRelationship typeCode="REFR">
+                <supply classCode="SPLY" moodCode="EVN">
+                  <!-- [C-CDA 2.1] Medication Dispense (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.18" extension="2014-06-09" />
+                  <id root="1.2.3.4.56789.1" extension="cb734647-fc99-424c-a864-7e3cda82e704" />
+                  <statusCode code="completed" />
+                  <effectiveTime value="20070103" />
+                  <repeatNumber value="1" />
+                  <quantity value="75" />
+                  <product>
+                    <manufacturedProduct classCode="MANU">
+                      <!-- [C-CDA 2.1] Medication Information (V2) -->
+                      <templateId root="2.16.840.1.113883.10.20.22.4.23" extension="2014-06-09" />
+                      <id root="2a620155-9d11-439e-92b3-5d9815ff4ee8" />
+                      <manufacturedMaterial>
+                        <code code="573621" codeSystem="2.16.840.1.113883.6.88"
+                          displayName="Proventil 0.09 MG/ACTUAT inhalant solution">
+                          <originalText>
+                            <reference value="#MedSec_1" />
+                          </originalText>
+                          <translation code="573621" displayName="Proventil 0.09 MG/ACTUAT inhalant solution"
+                            codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" />
+                        </code>
+                      </manufacturedMaterial>
+                      <manufacturerOrganization>
+                        <name>Medication Factory Inc.</name>
+                      </manufacturerOrganization>
+                    </manufacturedProduct>
+                  </product>
+                  <performer>
+                    <time nullFlavor="UNK" />
+                    <assignedEntity>
+                      <id root="2.16.840.1.113883.19.5.9999.456" extension="2981823" />
+                      <addr>
+                        <streetAddressLine>1001 Village Avenue</streetAddressLine>
+                        <city>Portland</city>
+                        <state>OR</state>
+                        <postalCode>99123</postalCode>
+                        <country>US</country>
+                      </addr>
+                      <telecom nullFlavor="UNK" />
+                      <assignedPerson>
+                        <name>
+                          <prefix>Dr.</prefix>
+                          <given>Henry</given>
+                          <family>Seven</family>
+                        </name>
+                      </assignedPerson>
+                      <representedOrganization>
+                        <id root="2.16.840.1.113883.19.5.9999.1393" />
+                        <name>Community Health and Hospitals</name>
+                        <telecom nullFlavor="UNK" />
+                        <addr nullFlavor="UNK" />
+                      </representedOrganization>
+                    </assignedEntity>
+                  </performer>
+                </supply>
+              </entryRelationship>
+              <entryRelationship typeCode="REFR">
+                <act classCode="ACT" moodCode="INT">
+                  <!-- [C-CDA 2.1] Instruction (V2) Template -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09" />
+                  <!-- Possible Side Effects (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.35" extension="2015-12-01" />
+                  <code code="396080005" displayName="medication side effects education"
+                    codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED-CT" />
+                  <statusCode code="completed" />
+                  <entryRelationship typeCode="SUBJ">
+                    <observation classCode="OBS" moodCode="DEF">
+                      <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" />
+                      <statusCode code="completed" />
+                      <value xsi:type="CD" code="85898001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"
+                        displayName="cardiomyopathy" />
+                    </observation>
+                  </entryRelationship>
+                  <entryRelationship typeCode="SUBJ">
+                    <observation classCode="OBS" moodCode="DEF">
+                      <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" />
+                      <statusCode code="completed" />
+                      <value xsi:type="CD" code="56317004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT"
+                        displayName="alopecia" />
+                    </observation>
+                  </entryRelationship>
+                </act>
+              </entryRelationship>
+              
+              <precondition typeCode="PRCN">
+                <criterion>
+                  <!-- [C-CDA 2.1] Precondition for Substance Administration (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.25" extension="2014-06-09" />
+                  <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" />
+                  <value xsi:type="CD" code="56018004" codeSystem="2.16.840.1.113883.6.96" displayName="Wheezing" />
+                </criterion>
+              </precondition>
+            </substanceAdministration>
+          </entry>
+
+          <!-- oxaliplatin  Day 1-->
+          <entry>
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <!-- [C-CDA 2.1] Medication Activity (V2) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09" />
+              <!-- Antineoplastic Agent (V3) -->
+              <templateId root="2.16.840.1.113883.10.20.30.3.44" extension="2015-12-01" />
+              <id root="39c22143-e9f2-42b7-b117-d1f0d454b0d9" />
+              <!-- SHALL completed -->
+              <statusCode code="completed" />
+              <!-- Administered Over 120 minutes on November 8, 2012 from 1000 to 1200-->
+              <effectiveTime xsi:type="IVL_TS">
+                <low value="201303081000" />
+                <high value="201303081200" />
+              </effectiveTime>
+              <!-- In "EVN" (event) mood, the repeatNumber is the number of occurrences. Repeat Number of 1 here means that this 
+                   dose is the cycle of the antineoplastic drug-->
+              <!-- SHALL REPEAT NUMBER -->
+              <repeatNumber value="8" />
+              <!-- SHALL [1..1] route -->
+              <routeCode code="C38276" displayName="INTRAVENOUS" codeSystem="2.16.840.1.113883.3.26.1.1"
+                codeSystemName="NCI Thesaurus (NCIt)" />
+              <!-- SHALL [1..1] dose -->
+              <!--Dose documented on an MAR would be actual mg given, not mg/m2 - though
+                  it is ordered in mg/m2-->
+              <doseQuantity value="85" unit="mg" />
+              <consumable>
+                <manufacturedProduct classCode="MANU">
+                  <!-- [C-CDA 2.1] Medication Information (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23" extension="2014-06-09" />
+                  <manufacturedMaterial>
+                    <code codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" code="351248"
+                      displayName="oxaliplatin 5 MG/ML Injectable Solution">
+                      <originalText>oxaliplatin 85mg/m2 IV in 500 ml 5% dextrose injection</originalText>
+                    </code>
+                    <!-- Brand Name -->
+                    <name>Eloxatin</name>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+              <participant typeCode="CSM">
+                <participantRole classCode="MANU">
+                  <!-- [C-CDA 2.1] Drug vehicle -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.24" />
+                  <id root="55498fff-a6cd-4867-8bb0-f0ad5930e5fd" />
+                  <code code="412307009" displayName="drug vehicle" codeSystem="2.16.840.1.113883.6.96" />
+                  <playingEntity classCode="MMAT">
+                    <code code="398934004" displayName="dextrose 5% in 0.2% Normal Saline (product)"
+                      codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+                    <name>5% Dextrose</name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+              <entryRelationship typeCode="REFR">
+                <act classCode="ACT" moodCode="EVN">
+                  <!-- Antineoplastic Regimen/Protocol (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.50" extension="2015-12-01" />
+                  <code code="133877004" codeSystem="2.16.840.1.113883.6.96" displayName="Therapeutic regimen" codeSystemName="SNOMED CT">
+                    <originalText>mFOLFOX6</originalText>
+                  </code>
+                  <statusCode code="completed" />
+                  <reference typeCode="REFR">
+                    <externalDocument classCode="DOC" moodCode="EVN">
+                      <!--This would be an identifier for the regimen protocol -->
+                      <id root="4e842410-8698-11e2-9e96-0800200c9a66" />
+                      <text mediaType="text"><reference
+                        value="http://www.chemotherapyadvisor.com/colon-cancer-treatment-regimens/article/218158/" />
+                      </text>
+                    </externalDocument>
+                  </reference>
+                </act>
+              </entryRelationship>
+              <!-- If the following entry relationship is present it indicates that this 
+                   treatment is part of a clinical trial -->
+              <entryRelationship typeCode="REFR">
+                <act classCode="ACT" moodCode="EVN">
+                  <!-- Clinical Drug Trial -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.4" />
+                  <code code="185922005" displayName="clinical drug trials" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMED CT" />
+                  <statusCode code="completed" />
+                </act>
+              </entryRelationship>
+              <entryRelationship typeCode="SUBJ">
+                <!-- MAY [0..*] antineoplastic treatment stopped-->
+                <observation classCode="OBS" moodCode="EVN">
+                  <!-- Antineoplastic Agent Discontinued (V2)-->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.43" extension="2015-12-01" />
+                  <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" />
+                  <statusCode code="completed" />
+                  <effectiveTime>
+                    <low value="20130308" />
+                    <high value="20130308" />
+                  </effectiveTime>
+                  <value xsi:type="CD" code="274512008" displayName="drug discontinued"
+                    codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+                  <!-- SHOULD [0..*] reasons for stopping -->
+                  <entryRelationship typeCode="RSON">
+                    <observation classCode="OBS" moodCode="EVN">
+                      <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" />
+                      <statusCode code="completed" />
+                      <effectiveTime>
+                        <low nullFlavor="NI" />
+                      </effectiveTime>
+                      <value xsi:type="CD" code="OTH" codeSystem="2.16.840.1.113883.6.88">
+                        <originalText>neuropathy</originalText>
+                      </value>
+                    </observation>
+                  </entryRelationship>
+                </observation>
+              </entryRelationship>
+              <entryRelationship typeCode="REFR">
+                <act classCode="ACT" moodCode="EVN">
+                  <!-- Antineoplastic Regimen/Protocol (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.50" extension="2015-12-01" />
+                  <code code="133877004" codeSystem="2.16.840.1.113883.6.96" displayName="Therapeutic regimen" codeSystemName="SNOMED CT">
+                    <originalText>mFOLFOX6</originalText>
+                  </code>
+                  <statusCode code="completed" />
+                  <reference typeCode="REFR">
+                    <externalDocument classCode="DOC" moodCode="EVN">
+                      <!--This would be an identifier for the regimen protocol -->
+                      <id root="4e842410-8698-11e2-9e96-0800200c9a66" />
+                      <text mediaType="text"><reference
+                        value="http://www.chemotherapyadvisor.com/colon-cancer-treatment-regimens/article/218158/" />
+                      </text>
+                    </externalDocument>
+                  </reference>
+                </act>
+              </entryRelationship>
+            </substanceAdministration>
+          </entry>
+
+
+          <!-- Leucovorin Day 1-->
+          <entry>
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <!-- [C-CDA 2.1] Medication Activity (V2) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09" />
+              <!-- Antineoplastic Agent (V3) -->
+              <templateId root="2.16.840.1.113883.10.20.30.3.44" extension="2015-12-01" />
+              <id root="39c22143-e9f2-42b7-b117-d1f0d454b0d9" />
+              <statusCode code="completed" />
+              <!-- Administered Over 120 minutes on November 8, 2012 from 1000 to 1200-->
+              <effectiveTime xsi:type="IVL_TS">
+                <low value="201305081000" />
+                <high value="201305081200" />
+              </effectiveTime>
+              <!-- SHALL REPEAT NUMBER -->
+              <repeatNumber value="12" />
+              <routeCode code="C38276" displayName="INTRAVENOUS" codeSystem="2.16.840.1.113883.3.26.1.1"
+                codeSystemName="NCI Thesaurus (NCIt)" />
+              <doseQuantity value="400" unit="mg" />
+              <consumable>
+                <manufacturedProduct classCode="MANU">
+                  <!-- [C-CDA 2.1] Medication Information (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23" extension="2014-06-09" />
+                  <manufacturedMaterial>
+                    <code codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm" code="311282"
+                      displayName="Leucovorin 10 MG/ML Injectable Solution">
+                      <originalText>Leucovorin 400 mg/m2 IV in 500 ml 5% dextrose injection
+											</originalText>
+                    </code>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+              <participant typeCode="CSM">
+                <participantRole classCode="MANU">
+                  <!-- ** Drug vehicle ** -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.24" />
+                  <id root="edc526d2-7577-4aeb-bf3a-99f1ce02a84c" />
+                  <code code="412307009" displayName="drug vehicle" codeSystem="2.16.840.1.113883.6.96" />
+                  <playingEntity classCode="MMAT">
+                    <code code="398934004" displayName="dextrose 5% in 0.2% Normal Saline (product)"
+                      codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+                    <name>5% Dextrose</name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+              <!-- NEW: MAY [0..*] contain information indicating the antineoplastic regimen protocol reference -->
+              <entryRelationship typeCode="REFR">
+                <act classCode="ACT" moodCode="EVN">
+                  <!-- Antineoplastic Regimen/Protocol (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.50" extension="2015-12-01" />
+                  <code code="133877004" codeSystem="2.16.840.1.113883.6.96" displayName="Therapeutic regimen" codeSystemName="SNOMED CT">
+                    <originalText>mFOLFOX6</originalText>
+                  </code>
+                  <statusCode code="completed" />
+                  <reference typeCode="REFR">
+                    <externalDocument classCode="DOC" moodCode="EVN">
+                      <!--This would be an identifier for the regimen protocol -->
+                      <id root="4e842410-8698-11e2-9e96-0800200c9a66" />
+                      <text mediaType="text"><reference
+                        value="http://www.chemotherapyadvisor.com/colon-cancer-treatment-regimens/article/218158/" />
+                      </text>
+                    </externalDocument>
+                  </reference>
+                </act>
+              </entryRelationship>
+              <!-- If the following entry relationship is present it indicates that this 
+                   treatment is part of a clinical trial -->
+              <entryRelationship typeCode="REFR">
+                <act classCode="ACT" moodCode="EVN">
+                  <!-- Clinical Drug Trial -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.4" />
+                  <code code="185922005" displayName="clinical drug trials" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMED CT" />
+                  <statusCode code="completed" />
+                </act>
+              </entryRelationship>
+            </substanceAdministration>
+          </entry>
+
+          <!-- 5-fluorouracil Bolus  Day 1 -->
+          <entry>
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <!-- [C-CDA 2.1] Medication Activity (V2) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09" />
+              <!-- Antineoplastic Agent (V3) -->
+              <templateId root="2.16.840.1.113883.10.20.30.3.44" extension="2015-12-01" />
+              <id root="39c22143-e9f2-42b7-b117-d1f0d454b0d9" />
+              <statusCode code="completed" />
+              <!-- Administered Over 120 minutes on November 8, 2012 from 1000 to 1200-->
+              <effectiveTime xsi:type="IVL_TS">
+                <low value="201305081200" />
+                <high value="201305081205" />
+              </effectiveTime>
+              <!-- SHALL REPEAT NUMBER -->
+              <repeatNumber value="12" />
+              <routeCode code="C38276" displayName="INTRAVENOUS" codeSystem="2.16.840.1.113883.3.26.1.1"
+                codeSystemName="NCI Thesaurus (NCIt)" />
+              <doseQuantity value="400" unit="mg" />
+              <consumable>
+                <manufacturedProduct classCode="MANU">
+                  <!-- [C-CDA 2.1] Medication Information (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23" extension="2014-06-09" />
+                  <manufacturedMaterial>
+                    <code codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm"
+                      code="372228" displayName="Fluorouracil Injectable Solution">
+                      <originalText>5-fluorouracil 400 mg/m2 IV bolus in 5% Dextrose</originalText>
+                    </code>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+              <participant typeCode="CSM">
+                <participantRole classCode="MANU">
+                  <!-- ** Drug vehicle ** -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.24" />
+                  <id root="11db0cac-e2e6-47e9-9977-70d8a70dceb2" />
+                  <code code="412307009" displayName="drug vehicle" codeSystem="2.16.840.1.113883.6.96" />
+                  <playingEntity classCode="MMAT">
+                    <code code="398934004" displayName="dextrose 5% in 0.2% Normal Saline (product)"
+                      codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+                    <name>5% Dextrose</name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+              <!-- NEW: MAY [0..*] contain information indicating the antineoplastic regimen protocol reference -->
+              <entryRelationship typeCode="REFR">
+                <act classCode="ACT" moodCode="EVN">
+                  <!-- Antineoplastic Regimen/Protocol (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.50" extension="2015-12-01" />
+                  <code code="133877004" codeSystem="2.16.840.1.113883.6.96" displayName="Therapeutic regimen" codeSystemName="SNOMED CT">
+                    <originalText>mFOLFOX6</originalText>
+                  </code>
+                  <statusCode code="completed" />
+                  <reference typeCode="REFR">
+                    <externalDocument classCode="DOC" moodCode="EVN">
+                      <!--This would be an identifier for the regimen protocol -->
+                      <id root="4e842410-8698-11e2-9e96-0800200c9a66" />
+                      <text mediaType="text"><reference
+                        value="http://www.chemotherapyadvisor.com/colon-cancer-treatment-regimens/article/218158/" />
+                      </text>
+                    </externalDocument>
+                  </reference>
+                </act>
+              </entryRelationship>
+              <!-- If the following entry relationship is present it indicates that this 
+                   treatment is part of a clinical trial -->
+              <entryRelationship typeCode="REFR">
+                <act classCode="ACT" moodCode="EVN">
+                  <!-- Clinical Drug Trial -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.4" />
+                  <code code="185922005" displayName="clinical drug trials" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMED CT" />
+                  <statusCode code="completed" />
+                </act>
+              </entryRelationship>
+            </substanceAdministration>
+          </entry>
+          <!-- 5-fluorouracil Over 46 hours-->
+          <entry>
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <!-- [C-CDA 2.1] Medication Activity (V2) -->
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09" />
+              <!-- Antineoplastic Agent (V3) -->
+              <templateId root="2.16.840.1.113883.10.20.30.3.44" extension="2015-12-01" />
+              <id root="39c22143-e9f2-42b7-b117-d1f0d454b0d9" />
+              <statusCode code="completed" />
+              <effectiveTime xsi:type="IVL_TS">
+                <low value="201305081205" />
+                <high value="201305081000" />
+              </effectiveTime>
+              <!-- SHALL REPEAT NUMBER -->
+              <repeatNumber value="12" />
+              <routeCode code="C38276" displayName="INTRAVENOUS" codeSystem="2.16.840.1.113883.3.26.1.1"
+                codeSystemName="NCI Thesaurus (NCIt)" />
+              <doseQuantity value="2400" unit="mg" />
+              <consumable>
+                <manufacturedProduct classCode="MANU">
+                  <!-- [C-CDA 2.1] Medication Information (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.23" extension="2014-06-09" />
+                  <manufacturedMaterial>
+                    <code codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm"
+                      code="372228" displayName="Fluorouracil Injectable Solution">
+                      <originalText>5-fluorouracil 2400 mg/m2 IV over 46 hours in 5%
+												Dextrose</originalText>
+                    </code>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+              <participant typeCode="CSM">
+                <participantRole classCode="MANU">
+                  <!-- ** Drug vehicle ** -->
+                  <templateId root="2.16.840.1.113883.10.20.22.4.24" />
+                  <id root="0fcb40ae-1608-4cc7-84d6-84a15d8e0037" />
+                  <code code="412307009" displayName="drug vehicle" codeSystem="2.16.840.1.113883.6.96" />
+                  <playingEntity classCode="MMAT">
+                    <code code="398934004" displayName="dextrose 5% in 0.2% Normal Saline (product)"
+                      codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" />
+                    <name>5% Dextrose</name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+              <!-- NEW: MAY [0..*] contain information indicating the antineoplastic regimen protocol reference -->
+              <entryRelationship typeCode="REFR">
+                <act classCode="ACT" moodCode="EVN">
+                  <!-- Antineoplastic Regimen/Protocol (V2) -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.50" extension="2015-12-01" />
+                  <code code="133877004" codeSystem="2.16.840.1.113883.6.96" displayName="Therapeutic regimen" codeSystemName="SNOMED CT">
+                    <originalText>mFOLFOX6</originalText>
+                  </code>
+                  <statusCode code="completed" />
+                  <reference typeCode="REFR">
+                    <externalDocument classCode="DOC" moodCode="EVN">
+                      <!--This would be an identifier for the regimen protocol -->
+                      <id root="4e842410-8698-11e2-9e96-0800200c9a66" />
+                      <text mediaType="text"><reference
+                        value="http://www.chemotherapyadvisor.com/colon-cancer-treatment-regimens/article/218158/" />
+                      </text>
+                    </externalDocument>
+                  </reference>
+                </act>
+              </entryRelationship>
+              <!-- If the following entry relationship is present it indicates that this 
+                   treatment is part of a clinical trial -->
+              <entryRelationship typeCode="REFR">
+                <act classCode="ACT" moodCode="EVN">
+                  <!-- Clinical Drug Trial -->
+                  <templateId root="2.16.840.1.113883.10.20.30.3.4" />
+                  <code code="185922005" displayName="clinical drug trials" codeSystem="2.16.840.1.113883.6.96"
+                    codeSystemName="SNOMED CT" />
+                  <statusCode code="completed" />
+                </act>
+              </entryRelationship>
+            </substanceAdministration>
+          </entry>
+
+
+
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>

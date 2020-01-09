@@ -1,0 +1,1 @@
+This content is no longer maintained in SVN. It is now located on Confluence: https://confluence.hl7.org/display/SD/About+Structured+Documents+WG

@@ -1,0 +1,2 @@
+This branch represents archived content from the SDWG SVN repository: https://gforge.hl7.org/svn/strucdoc/trunk
+The content no longer exists in SVN, but you may reference the SVN repository for historical purposes.
